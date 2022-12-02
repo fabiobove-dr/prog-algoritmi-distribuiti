@@ -5,6 +5,7 @@ This module runs the server of the "Strange Multiplayer Game".
 
 Before running open a new terminale and type the following command on the terminal: 
 >> python -m Pyro4.naming
+>> python run_server.py
 """
 
 import Pyro4
