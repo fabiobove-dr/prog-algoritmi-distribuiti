@@ -1,3 +1,8 @@
+"""
+Fabio Bove | 216219@studenti.unimore.it | fabio.bove.dr@gmail.com
+This Class implements a StrangeClient and its functionalities for the "Strange Multiplayer Game".
+"""
+
 import Pyro4
 import time
 from utils.logger import log
@@ -11,13 +16,19 @@ class StrangeClient:
                 self.connected = False
                 self.opponent = None
 
-        def connect_to_server(self, server_uri):
+        def connect_to_server(self, server_uri:str) -> None:
+                """
+                connect_to_server, method that allow the client to search for an active StrangeGameServer identified by the given uri
+                
+                param: server_uri: A Pyroname string that allow to connect to the server e.g. "PYRONAME:StrangeGameServer"
+                returns: none
+                """
                 server_is_active, msg_printed = False, False
                 log(type="GAME_MSG", msg=f"Connecting to StrangeGameServer...")
-                while not server_is_active:
+                while not server_is_active: # Search for the server until gets an answer
                         try:
                                 self.server = Pyro4.Proxy(server_uri) # Use name server object lookup uri shortcut
-                                server_is_active = self.server.check_status()
+                                server_is_active = self.server.check_status() #Check the status of the server
                         except Exception as e:
                                 if not msg_printed:
                                         msg_printed = True
@@ -26,6 +37,12 @@ class StrangeClient:
                 log(type="GAME_MSG", msg=f"Connected to StrangeGameServer...")
                 
         def is_connected(self) -> bool:
+                """
+                is_connected, method that returns if a client is connected to server 
+                
+                param: None
+                returns: self.connected: Boolean that specify if the client is connect or not
+                """
                 return self.connected
 
         def leave_game(self):
@@ -92,13 +109,19 @@ class StrangeClient:
                         log(type="GAME_MSG", msg=f"Sorry you provide a wrong value of occurrence.") 
                 return answer_is_valid
 
-        def reset_player_status(self):
+        def reset_player_status(self) -> None:
+                """
+                reset_player_status, method that reset the attribute of a player that is connect to the server,
+                used when a player has won a match or its opponent leaves the game
+
+                param: None
+                returns: None
+                """
                 if self.connected:
-                        self.game_id = None
-                        self.player_id = None
-                        input("Previous Game is over- press ENTER to play again.")
-                        self.player_id = self.server.get_player_id(self.name)
-                        self.server.activate_player(self.name)
+                        self.game_id,  self.player_id = None, None # Reset the player and game ids
+                        input("Previous Game is over - press ENTER to play again.") # Remains in pause waiting for the player response
+                        self.player_id = self.server.get_player_id(self.name) # Get a new id for player
+                        self.server.activate_player(self.name) # Re-activate the player so if a new opponents is found a new match can start
                         log(type="GAME_MSG", msg=f"Hey [{self.name}], we are ready for another match - Your new id is {self.player_id}")
 
                 
