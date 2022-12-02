@@ -69,8 +69,9 @@ class StrangeGameServer:
         # because we try to access an element of the list which doesn't exists (in case we have only one player)
         # if len(self.active_players) > 1 and game_id is not None:
         try:
-            player_1_id = (game_id * 2) - 2
-            player_2_id = (game_id * 2) - 1
+            player_1_id = (game_id * 2) - 1
+            player_2_id = (game_id * 2) - 2
+            # log(type="INFO", msg=f"Players ids [{player_1_id}, {player_2_id}]")
             player_1 = self.players_names[player_1_id]  
             player_2 = self.players_names[player_2_id]
             return player_1, player_2
@@ -84,7 +85,8 @@ class StrangeGameServer:
     def start_game(self, name):
         # If we have an even number of active players on the server we can start a new game
         if self.active_players % 2 == 0 and self.active_players != 0:
-            new_game_id = (self.active_players % 2) + 1
+            new_game_id = int((self.active_players / 2))
+            log(type="INFO", msg=f"Game id [{new_game_id}]")
             player_1 = self.players_names[-1]  
             player_2 = self.players_names[-2]
             opponent = player_2 if name == player_1 else player_1
@@ -128,7 +130,7 @@ class StrangeGameServer:
         details = None
         while details is None:
             try: 
-                details  = self.games_details[game_id -1][1]
+                details  = self.games_details[game_id -1][game_id ]
                 log(type="INFO", msg=f"Details for game [{game_id}] obtained for player [{name}]")
             except Exception as e:
                 pass
@@ -139,13 +141,13 @@ class StrangeGameServer:
         return self.player_answered(player_1, game_id) and self.player_answered(player_2, game_id) 
     
     def player_answered(self, name, game_id):
-        return True if name in self.games_details[game_id -1][1] else False
+        return True if name in self.games_details[game_id -1][game_id ] else False
 
     def validate_answer(self, game_id, name, data):
         # Store player answer -> wich is a dict {'answer': answer, 'total_time': total_time}
         if data: 
             try:
-                self.games_details[game_id -1][1][name] = data
+                self.games_details[game_id -1][game_id ][name] = data
                 log(type="INFO", msg=f"Player [{name}] stored correctly")
             except Exception as e:
                 log(type="ERROR", msg=f"Error storing information for player [{name}] answer, {e}")
@@ -153,15 +155,15 @@ class StrangeGameServer:
         answer_is_valid = False
         answer_time = float('inf')
         
-        occurrence =  int(self.games_details[game_id -1][1]['occurrence'])
+        occurrence =  int(self.games_details[game_id -1][game_id ]['occurrence'])
         try:
-            player_answer = int(self.games_details[game_id -1][1][name]['answer'])
+            player_answer = int(self.games_details[game_id -1][game_id ][name]['answer'])
         except Exception as e:
             player_answer = None
         
         if player_answer == occurrence:
             answer_is_valid = True 
-            answer_time = self.games_details[game_id -1][1][name]['total_time']
+            answer_time = self.games_details[game_id -1][game_id ][name]['total_time']
             log(type="INFO", msg=f"Player [{name}] answer is valid")
         log(type="INFO", msg=f"Player [{name}] answer validity checked -> [{occurrence}, {player_answer}] ")
 
