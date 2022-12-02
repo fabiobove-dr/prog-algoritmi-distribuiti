@@ -78,37 +78,40 @@ class StrangeClient:
                         
                         # Finds the winner of the game 
                         winner, answer_is_valid = None, None
-                        while winner is None:
-                                if answer_is_valid is None:
+                        while winner is None: # While there's no winner
+
+                                if answer_is_valid is None: # If The player has't given an answer yet
                                         answer_is_valid = self.send_answer(game_details)
                                 
-                                if self.server.both_player_answered(self.game_id):
-                                        winner = self.server.find_winner(self.game_id)
-                                
+                                if self.server.both_player_answered(self.game_id): # If both player have answered we can check if ther is a winner
+                                        winner = self.server.find_winner(self.game_id) # Finds the winner or check for tie
                                         if winner is not None:
-                                                if self.name in winner:
+                                                if self.name in winner: # If the player is the winner of the game
                                                         log(type="GAME_MSG", msg=f"Congratulations [{winner}] - Your Won! ;)")  
-                                                        return
-                                                else:
-                                                        # Close the game and makes the opponent leave
+                                                        return # Returns so other action can be performed
+                                                else: # If the player is not the winner - close the game leaves
                                                         log(type="GAME_MSG", msg=f"Oops [{self.name}] you lost! :(")  
                                                         self.leave_game()
-                                        else:
+                                        else: # Both answer are not valid or its a tie, we reset the answer_is_valid so player can anwer again
                                                  answer_is_valid = None 
                                 
 
-        def send_answer(self, game_details):
-                os.system('cls')
+        def send_answer(self, game_details) -> bool:
+                os.system('cls') # Clean the screen from previous messages
                 log(type="GAME_MSG", msg=f"Type the number of occurrence for character: '{game_details['character_to_find']}'")
-                time_start = time.time()
-                answer = input(">> ")
-                time_end = time.time()
-                total_time =  round(time_end - time_start, 3)
-                player_answer = {'answer': answer, 'total_time': total_time}
+                
+                time_start = time.time() # Timer is started for performance evaluation and see which player is the fastest
+                answer = input(">> ") # Takes the player answer
+                time_end = time.time() # Time is stopped
+                total_time =  round(time_end - time_start, 4) # We round the time results to the forth decimal, should be enought 
+
+                player_answer = {'answer': answer, 'total_time': total_time} # Creates a dict with the player answer details: time and given number of occurrence
                 log(type="GAME_MSG", msg=f"You said in {total_time}s that the word has {player_answer['answer']} occurence for char {game_details['character_to_find']}")
+                
+                # Check the validity of the player answer and print a message depending on the validity
                 answer_is_valid, _ = self.server.validate_answer(self.game_id, self.name, data=player_answer)
-                if not answer_is_valid:
-                        log(type="GAME_MSG", msg=f"Sorry you provide a wrong value of occurrence.") 
+                log(type="GAME_MSG", msg=f"Sorry, you provide a wrong number of occurrence...")  if not answer_is_valid else log(type="GAME_MSG", msg=f"Yeah, you provide the correct number of occurrence - Let's see if fast enought...") 
+                        
                 return answer_is_valid
 
         def reset_player_status(self) -> None:
@@ -119,7 +122,7 @@ class StrangeClient:
                 param: None
                 returns: None
                 """
-                if self.connected:
+                if self.connected: # If the player is connected to the server
                         self.game_id,  self.player_id = None, None # Reset the player and game ids
                         input("Previous Game is over - press ENTER to play again.") # Remains in pause waiting for the player response
                         self.player_id = self.server.get_player_id(self.name) # Get a new id for player
