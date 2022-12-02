@@ -96,7 +96,7 @@ class StrangeGameServer:
                 self.active_games_id.append(new_game_id)
                 # Configure the game 
                 game = StrangeGame(new_game_id, game_complexity=50)
-                self.games_details.append({new_game_id :  game.configure_game()})
+                self.games_details.append({'game_id': new_game_id, 'details': game.configure_game()})
                 log(type="INFO", msg=f"Game details: {self.games_details[-1]}")
             return  opponent, new_game_id
         else:
@@ -119,7 +119,7 @@ class StrangeGameServer:
                 self.players_names.append(player_1) if player_1 != name else self.players_names.append(player_2) 
                 # The game_id is removed from the active games on the server
                 self.active_games_id.remove(game_id)
-                del self.games_details[game_id -1]
+                del self.remove_game_details(game_id)
                 log(type="INFO", msg=f"Player [{name}] has left - Game {game_id} | [{player_1}] vs [{player_2}] Closed")
                 log(type="INFO", msg=f"Active Players: {self.active_players}, Connected Players: {len(self.players_names)}, Active Games: {len(self.active_games_id)}")
             except Exception as e:
@@ -130,7 +130,7 @@ class StrangeGameServer:
         details = None
         while details is None:
             try: 
-                details  = self.games_details[game_id -1][game_id ]
+                details  = self.get_game_details(game_id)
                 log(type="INFO", msg=f"Details for game [{game_id}] obtained for player [{name}]")
             except Exception as e:
                 pass
@@ -141,13 +141,42 @@ class StrangeGameServer:
         return self.player_answered(player_1, game_id) and self.player_answered(player_2, game_id) 
     
     def player_answered(self, name, game_id):
-        return True if name in self.games_details[game_id -1][game_id ] else False
+        return True if name in self.get_game_details(game_id) else False
+
+    def get_game_details(self, game_id):
+        try:
+            for game in self.games_details:
+                if game['game_id'] == game_id:
+                    log(type="INFO", msg=f"Game details found for game [{game_id}]")
+                    return game       
+        except Exception as e:
+            log(type="INFO", msg=f"Can't get Game details found for game [{game_id}], {e}")
+
+    def store_player_answer(self, game_id, name, data):
+        try:
+            for game in self.games_details:
+                if game['game_id'] == game_id:
+                    game[name] = data
+                    log(type="INFO", msg=f"Player answer stored for [{game_id}], player [{name}]")
+                    break
+        except Exception as e:
+            log(type="INFO", msg=f"Can't store player [{name}] answer, for game [{game_id}], {e}")
+
+    def remove_game_details(self, game_id):
+        try:
+            for game in self.games_details:
+                if game['game_id'] == game_id:
+                    del game
+                    break
+            log(type="INFO", msg=f"Game details removed for game [{game_id}]")
+        except Exception as e:
+            log(type="INFO", msg=f"Can't remove Game details for game [{game_id}], {e}")
 
     def validate_answer(self, game_id, name, data):
         # Store player answer -> wich is a dict {'answer': answer, 'total_time': total_time}
         if data: 
             try:
-                self.games_details[game_id -1][game_id ][name] = data
+                self.store_player_answer(game_id, name, data)
                 log(type="INFO", msg=f"Player [{name}] stored correctly")
             except Exception as e:
                 log(type="ERROR", msg=f"Error storing information for player [{name}] answer, {e}")
@@ -155,15 +184,15 @@ class StrangeGameServer:
         answer_is_valid = False
         answer_time = float('inf')
         
-        occurrence =  int(self.games_details[game_id -1][game_id ]['occurrence'])
+        occurrence =  int(self.get_games_details(game_id)['occurrence'])
         try:
-            player_answer = int(self.games_details[game_id -1][game_id ][name]['answer'])
+            player_answer = int(self.get_games_details(game_id)[name]['answer'])
         except Exception as e:
             player_answer = None
         
         if player_answer == occurrence:
             answer_is_valid = True 
-            answer_time = self.games_details[game_id -1][game_id ][name]['total_time']
+            answer_time = self.get_games_details(game_id)[name]['total_time']
             log(type="INFO", msg=f"Player [{name}] answer is valid")
         log(type="INFO", msg=f"Player [{name}] answer validity checked -> [{occurrence}, {player_answer}] ")
 

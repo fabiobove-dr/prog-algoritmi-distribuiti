@@ -1,0 +1,310 @@
+GAME_MSG - Connecting to StrangeGameServer... 
+GAME_MSG - Connecting to StrangeGameServer... 
+GAME_MSG - Connecting to StrangeGameServer... 
+GAME_MSG - Waiting for StrangeGameServer... 
+GAME_MSG - Connecting to StrangeGameServer... 
+GAME_MSG - Waiting for StrangeGameServer... 
+GAME_MSG - Waiting for StrangeGameServer... 
+GAME_MSG - Waiting for StrangeGameServer... 
+GAME_MSG - StrangeGameServer - server started. 
+INFO - I'm a [StrangeGameServer] and i'm available to do strange stuff. 
+GAME_MSG - Connected to StrangeGameServer... 
+INFO - I'm a [StrangeGameServer] and i'm available to do strange stuff. 
+GAME_MSG - Connected to StrangeGameServer... 
+INFO - I'm a [StrangeGameServer] and i'm available to do strange stuff. 
+GAME_MSG - Connected to StrangeGameServer... 
+INFO - I'm a [StrangeGameServer] and i'm available to do strange stuff. 
+GAME_MSG - Connected to StrangeGameServer... 
+GAME_MSG - StrangeGameServer - server started. 
+GAME_MSG - Connecting to StrangeGameServer... 
+GAME_MSG - Connecting to StrangeGameServer... 
+GAME_MSG - Waiting for StrangeGameServer... 
+GAME_MSG - Connecting to StrangeGameServer... 
+INFO - I'm a [StrangeGameServer] and i'm available to do strange stuff. 
+GAME_MSG - Connected to StrangeGameServer... 
+INFO - I'm a [StrangeGameServer] and i'm available to do strange stuff. 
+GAME_MSG - Connected to StrangeGameServer... 
+INFO - I'm a [StrangeGameServer] and i'm available to do strange stuff. 
+GAME_MSG - Connected to StrangeGameServer... 
+GAME_MSG - Connecting to StrangeGameServer... 
+INFO - Player [A] added to server 
+GAME_MSG - Hello A, you are player number 1 
+GAME_MSG - Hey [A], wait for your opponent. 
+INFO - I'm a [StrangeGameServer] and i'm available to do strange stuff. 
+GAME_MSG - Connected to StrangeGameServer... 
+INFO - Player [B] added to server 
+INFO - Game id [1] 
+INFO - New Game [1] Started between [B] vs [A] 
+GAME_MSG - Hello B, you are player number 2 
+INFO - Started a new game configuration 
+INFO - Game id [1] 
+INFO - Base word generated with game_complexity: 50 
+GAME_MSG - Hey [B], your opponent is [A] - Game: [1] 
+INFO - Long Strange Word created. 
+INFO - Check the status of game 1 
+INFO - Choose the character to find and calculated its occurrence. 
+GAME_MSG - Playing :) 
+INFO - Game details: {1: {'game_complexity': 50, 'long_strange_word': 'G5ZG3W7YEVEQOU5EKAAK1107EC9OXDQ5LH2J1LNWJDHJ472FZ9', 'character_to_find': '7', 'occurrence': 3}} 
+INFO - Active Games: [1] 
+GAME_MSG - Hey [A], your opponent is [B] - Game: [1] 
+INFO - Details for game [1] obtained for player [B] 
+INFO - Check the status of game 1 
+GAME_MSG - Long Strange Word: G5ZG3W7YEVEQOU5EKAAK1107EC9OXDQ5LH2J1LNWJDHJ472FZ9 
+GAME_MSG - Playing :) 
+INFO - Active Games: [1] 
+INFO - Details for game [1] obtained for player [A] 
+GAME_MSG - Long Strange Word: G5ZG3W7YEVEQOU5EKAAK1107EC9OXDQ5LH2J1LNWJDHJ472FZ9 
+GAME_MSG - Type the number of occurrence for character: '7' 
+GAME_MSG - Type the number of occurrence for character: '7' 
+INFO - Player [C] added to server 
+GAME_MSG - Hello C, you are player number 3 
+GAME_MSG - Hey [C], wait for your opponent. 
+INFO - Player [D] added to server 
+INFO - Game id [2] 
+GAME_MSG - Hello D, you are player number 4 
+INFO - New Game [2] Started between [D] vs [C] 
+INFO - Game id [2] 
+INFO - Started a new game configuration 
+GAME_MSG - Hey [D], your opponent is [C] - Game: [2] 
+INFO - Base word generated with game_complexity: 50 
+INFO - Long Strange Word created. 
+INFO - Check the status of game 2 
+INFO - Choose the character to find and calculated its occurrence. 
+GAME_MSG - Playing :) 
+INFO - Game details: {2: {'game_complexity': 50, 'long_strange_word': 'OP4V1NLFIT7B9LINGUSR6OL1L6SYZP7ABNFJ9YX8C0PEYX1TYK', 'character_to_find': '7', 'occurrence': 2}} 
+INFO - Active Games: [1, 2] 
+GAME_MSG - Hey [C], your opponent is [D] - Game: [2] 
+INFO - Details for game [2] obtained for player [D] 
+INFO - Check the status of game 2 
+GAME_MSG - Long Strange Word: OP4V1NLFIT7B9LINGUSR6OL1L6SYZP7ABNFJ9YX8C0PEYX1TYK 
+GAME_MSG - Playing :) 
+INFO - Active Games: [1, 2] 
+INFO - Details for game [2] obtained for player [C] 
+GAME_MSG - Long Strange Word: OP4V1NLFIT7B9LINGUSR6OL1L6SYZP7ABNFJ9YX8C0PEYX1TYK 
+GAME_MSG - Type the number of occurrence for character: '7' 
+GAME_MSG - Type the number of occurrence for character: '7' 
+GAME_MSG - You said in 10.6026s that the word has 3 occurence for char 7 
+INFO - Player [A] stored correctly 
+INFO - Player [A] answer is valid 
+INFO - Player [A] answer validity checked -> [3, 3]  
+GAME_MSG - Yeah, you provide the correct number of occurrence - Let's see if fast enought... 
+GAME_MSG - You said in 12.2331s that the word has 2 occurence for char 7 
+INFO - Player [B] stored correctly 
+INFO - Player [B] answer validity checked -> [3, 2]  
+INFO - Player [B] answer validity checked -> [3, 2]  
+INFO - Player [A] answer is valid 
+INFO - Player [A] answer validity checked -> [3, 3]  
+GAME_MSG - Sorry, you provide a wrong number of occurrence... 
+INFO - Times [inf vs 10.6026] 
+INFO - Player [B] answer validity checked -> [3, 2]  
+GAME_MSG - Congratulations [['A']] - Your Won! ;) 
+INFO - Player [A] answer is valid 
+INFO - Player [A] answer validity checked -> [3, 3]  
+INFO - Times [inf vs 10.6026] 
+GAME_MSG - Oops [B] you lost! :( 
+INFO - Player [B] has left - Game 1 | [B] vs [A] Closed 
+INFO - Active Players: 2, Connected Players: 3, Active Games: 1 
+GAME_MSG - Bye [B], game left! 
+INFO - Check the status of game 1 
+GAME_MSG - You said in 15.193s that the word has 2 occurence for char 7 
+ERROR - Error storing information for player [C] answer, list index out of range 
+GAME_MSG - You said in 20.5065s that the word has 1 occurence for char 7 
+ERROR - Error storing information for player [D] answer, list index out of range 
+GAME_MSG - StrangeGameServer - server started. 
+GAME_MSG - Connecting to StrangeGameServer... 
+GAME_MSG - Connecting to StrangeGameServer... 
+GAME_MSG - Waiting for StrangeGameServer... 
+INFO - I'm a [StrangeGameServer] and i'm available to do strange stuff. 
+GAME_MSG - Connected to StrangeGameServer... 
+INFO - I'm a [StrangeGameServer] and i'm available to do strange stuff. 
+GAME_MSG - Connected to StrangeGameServer... 
+INFO - Player [A] added to server 
+GAME_MSG - Hello A, you are player number 1 
+GAME_MSG - Hey [A], wait for your opponent. 
+INFO - Player [B] added to server 
+INFO - Game id [1] 
+GAME_MSG - Hello B, you are player number 2 
+ 
+INFO - Started a new game configuration 
+INFO - Game id [1] 
+INFO - Base word generated with game_complexity: 50 
+GAME_MSG - Hey [B], your opponent is [A] - Game: [1] 
+INFO - Long Strange Word created. 
+INFO - Choose the character to find and calculated its occurrence. 
+INFO - Check the status of game 1 
+INFO - Game details: {1: {'game_complexity': 50, 'long_strange_word': 'YPMMQ6YN2DISNVEZQ3B3U0QK0J6PJI3EGUVVUWN259509C2AOW', 'character_to_find': '2', 'occurrence': 3}} 
+GAME_MSG - Playing :) 
+GAME_MSG - Hey [A], your opponent is [B] - Game: [1] 
+INFO - Active Games: [1] 
+INFO - Check the status of game 1 
+INFO - Details for game [1] obtained for player [B] 
+GAME_MSG - Playing :) 
+GAME_MSG - Long Strange Word: YPMMQ6YN2DISNVEZQ3B3U0QK0J6PJI3EGUVVUWN259509C2AOW 
+INFO - Active Games: [1] 
+INFO - Details for game [1] obtained for player [A] 
+GAME_MSG - Long Strange Word: YPMMQ6YN2DISNVEZQ3B3U0QK0J6PJI3EGUVVUWN259509C2AOW 
+GAME_MSG - StrangeGameServer - server started. 
+GAME_MSG - Connecting to StrangeGameServer... 
+GAME_MSG - Connecting to StrangeGameServer... 
+INFO - I'm a [StrangeGameServer] and i'm available to do strange stuff. 
+GAME_MSG - Connected to StrangeGameServer... 
+GAME_MSG - Waiting for StrangeGameServer... 
+INFO - Player [A] added to server 
+GAME_MSG - Hello A, you are player number 1 
+GAME_MSG - Hey [A], wait for your opponent. 
+INFO - I'm a [StrangeGameServer] and i'm available to do strange stuff. 
+GAME_MSG - Connected to StrangeGameServer... 
+INFO - Game id [1] 
+INFO - Player [B] added to server 
+INFO - New Game [1] Started between [B] vs [A] 
+INFO - Started a new game configuration 
+2 
+INFO - Game id [1] 
+INFO - Base word generated with game_complexity: 50 
+INFO - Long Strange Word created. 
+GAME_MSG - Hey [B], your opponent is [A] - Game: [1] 
+INFO - Choose the character to find and calculated its occurrence. 
+INFO - Check the status of game 1 
+INFO - Game details: {1: {'game_complexity': 50, 'long_strange_word': 'AHT3VIYPOVKV0S1OKQ6ECZ1BWKYCCWY9OTCG1JBGW5KQ160GCQ', 'character_to_find': 'S', 'occurrence': 1}} 
+GAME_MSG - Playing :) 
+GAME_MSG - Hey [A], your opponent is [B] - Game: [1] 
+INFO - Active Games: [1] 
+INFO - Check the status of game 1 
+INFO - Details for game [1] obtained for player [B] 
+GAME_MSG - Playing :) 
+GAME_MSG - Long Strange Word: AHT3VIYPOVKV0S1OKQ6ECZ1BWKYCCWY9OTCG1JBGW5KQ160GCQ 
+INFO - Active Games: [1] 
+INFO - Details for game [1] obtained for player [A] 
+GAME_MSG - Long Strange Word: AHT3VIYPOVKV0S1OKQ6ECZ1BWKYCCWY9OTCG1JBGW5KQ160GCQ 
+GAME_MSG - Connecting to StrangeGameServer... 
+GAME_MSG - Connecting to StrangeGameServer... 
+INFO - I'm a [StrangeGameServer] and i'm available to do strange stuff. 
+GAME_MSG - Connected to StrangeGameServer... 
+INFO - I'm a [StrangeGameServer] and i'm available to do strange stuff. 
+GAME_MSG - Connected to StrangeGameServer... 
+INFO - Player [1] added to server 
+GAME_MSG - Hello 1, you are player number 3 
+GAME_MSG - Hey [1], wait for your opponent. 
+INFO - Player [12] added to server 
+INFO - Game id [2] 
+GAME_MSG - Hello 12, you are player number 4 
+INFO - New Game [2] Started between [12] vs [1] 
+INFO - Started a new game configuration 
+INFO - Game id [2] 
+INFO - Base word generated with game_complexity: 50 
+GAME_MSG - Hey [12], your opponent is [1] - Game: [2] 
+INFO - Long Strange Word created. 
+INFO - Check the status of game 2 
+INFO - Choose the character to find and calculated its occurrence. 
+GAME_MSG - Playing :) 
+INFO - Game details: {2: {'game_complexity': 50, 'long_strange_word': 'KF7DW007KB3Z0HC98JW3FDBYXBUIA8SEHMZ34DE4C4P982AM2O', 'character_to_find': 'W', 'occurrence': 2}} 
+INFO - Active Games: [1, 2] 
+GAME_MSG - Hey [1], your opponent is [12] - Game: [2] 
+INFO - Details for game [2] obtained for player [12] 
+INFO - Check the status of game 2 
+GAME_MSG - Long Strange Word: KF7DW007KB3Z0HC98JW3FDBYXBUIA8SEHMZ34DE4C4P982AM2O 
+GAME_MSG - Playing :) 
+INFO - Active Games: [1, 2] 
+INFO - Details for game [2] obtained for player [1] 
+GAME_MSG - Long Strange Word: KF7DW007KB3Z0HC98JW3FDBYXBUIA8SEHMZ34DE4C4P982AM2O 
+GAME_MSG - StrangeGameServer - server started. 
+GAME_MSG - Connecting to StrangeGameServer... 
+GAME_MSG - Connecting to StrangeGameServer... 
+GAME_MSG - Waiting for StrangeGameServer... 
+INFO - I'm a [StrangeGameServer] and i'm available to do strange stuff. 
+GAME_MSG - Connected to StrangeGameServer... 
+INFO - Player [1] added to server 
+GAME_MSG - Hello 1, you are player number 1 
+GAME_MSG - Hey [1], wait for your opponent. 
+INFO - I'm a [StrangeGameServer] and i'm available to do strange stuff. 
+GAME_MSG - Connected to StrangeGameServer... 
+INFO - Player [12] added to server 
+INFO - Game id [1] 
+GAME_MSG - Hello 12, you are player number 2 
+INFO - New Game [1] Started between [12] vs [1] 
+INFO - Game id [1] 
+INFO - Started a new game configuration 
+GAME_MSG - Hey [12], your opponent is [1] - Game: [1] 
+INFO - Base word generated with game_complexity: 50 
+INFO - Check the status of game 1 
+INFO - Long Strange Word created. 
+GAME_MSG - Playing :) 
+INFO - Choose the character to find and calculated its occurrence. 
+INFO - Active Games: [1] 
+INFO - Game details: {1: {'game_complexity': 50, 'long_strange_word': 'YL0YKPI828YL0WOLG556T362VV4YX52G4LLR5A67KM5KRBH0BC', 'character_to_find': '7', 'occurrence': 1}} 
+INFO - Details for game [1] obtained for player [12] 
+GAME_MSG - Hey [1], your opponent is [12] - Game: [1] 
+GAME_MSG - Long Strange Word: YL0YKPI828YL0WOLG556T362VV4YX52G4LLR5A67KM5KRBH0BC 
+INFO - Check the status of game 1 
+GAME_MSG - Playing :) 
+INFO - Active Games: [1] 
+INFO - Details for game [1] obtained for player [1] 
+GAME_MSG - Long Strange Word: YL0YKPI828YL0WOLG556T362VV4YX52G4LLR5A67KM5KRBH0BC 
+GAME_MSG - Type the number of occurrence for character: '7' 
+GAME_MSG - StrangeGameServer - server started. 
+GAME_MSG - Connecting to StrangeGameServer... 
+GAME_MSG - Connecting to StrangeGameServer... 
+GAME_MSG - Waiting for StrangeGameServer... 
+INFO - I'm a [StrangeGameServer] and i'm available to do strange stuff. 
+GAME_MSG - Connected to StrangeGameServer... 
+INFO - I'm a [StrangeGameServer] and i'm available to do strange stuff. 
+GAME_MSG - Connected to StrangeGameServer... 
+INFO - Player [2] added to server 
+GAME_MSG - Hello 2, you are player number 1 
+GAME_MSG - Hey [2], wait for your opponent. 
+INFO - Game id [1] 
+ed to server 
+GAME_MSG - Hello 1, you are player number 2 
+INFO - New Game [1] Started between [1] vs [2] 
+INFO - Started a new game configuration 
+INFO - Game id [1] 
+INFO - Base word generated with game_complexity: 50 
+GAME_MSG - Hey [1], your opponent is [2] - Game: [1] 
+INFO - Long Strange Word created. 
+INFO - Choose the character to find and calculated its occurrence. 
+INFO - Check the status of game 1 
+INFO - Game details: {1: {'game_complexity': 50, 'long_strange_word': 'IRICG3388HG8EOUZO2A7PLDXH1JCGIZGGY3Y8QP9AZDQF56F2A', 'character_to_find': 'F', 'occurrence': 2}} 
+GAME_MSG - Playing :) 
+GAME_MSG - Hey [2], your opponent is [1] - Game: [1] 
+INFO - Active Games: [1] 
+INFO - Check the status of game 1 
+INFO - Details for game [1] obtained for player [1] 
+GAME_MSG - Playing :) 
+GAME_MSG - Long Strange Word: IRICG3388HG8EOUZO2A7PLDXH1JCGIZGGY3Y8QP9AZDQF56F2A 
+INFO - Active Games: [1] 
+INFO - Details for game [1] obtained for player [2] 
+GAME_MSG - Long Strange Word: IRICG3388HG8EOUZO2A7PLDXH1JCGIZGGY3Y8QP9AZDQF56F2A 
+GAME_MSG - Type the number of occurrence for character: 'F' 
+GAME_MSG - Connecting to StrangeGameServer... 
+INFO - I'm a [StrangeGameServer] and i'm available to do strange stuff. 
+GAME_MSG - Connected to StrangeGameServer... 
+GAME_MSG - Connecting to StrangeGameServer... 
+INFO - Player [2q] added to server 
+GAME_MSG - Hello 2q, you are player number 3 
+GAME_MSG - Hey [2q], wait for your opponent. 
+INFO - I'm a [StrangeGameServer] and i'm available to do strange stuff. 
+GAME_MSG - Connected to StrangeGameServer... 
+INFO - Player [dasda] added to server 
+INFO - Game id [2] 
+GAME_MSG - Hello dasda, you are player number 4 
+INFO - New Game [2] Started between [dasda] vs [2q] 
+INFO - Game id [2] 
+INFO - Started a new game configuration 
+GAME_MSG - Hey [dasda], your opponent is [2q] - Game: [2] 
+INFO - Base word generated with game_complexity: 50 
+INFO - Check the status of game 2 
+INFO - Long Strange Word created. 
+GAME_MSG - Playing :) 
+INFO - Choose the character to find and calculated its occurrence. 
+INFO - Active Games: [1, 2] 
+INFO - Game details: {2: {'game_complexity': 50, 'long_strange_word': 'VQYMR9Y8PX4KKQM1NU3JCP0QZXKYHPHH8WE8IGJVXYNHY0T5EQ', 'character_to_find': 'P', 'occurrence': 3}} 
+INFO - Details for game [2] obtained for player [dasda] 
+GAME_MSG - Hey [2q], your opponent is [dasda] - Game: [2] 
+GAME_MSG - Long Strange Word: VQYMR9Y8PX4KKQM1NU3JCP0QZXKYHPHH8WE8IGJVXYNHY0T5EQ 
+INFO - Check the status of game 2 
+GAME_MSG - Playing :) 
+INFO - Active Games: [1, 2] 
+INFO - Details for game [2] obtained for player [2q] 
+GAME_MSG - Long Strange Word: VQYMR9Y8PX4KKQM1NU3JCP0QZXKYHPHH8WE8IGJVXYNHY0T5EQ 
+GAME_MSG - Type the number of occurrence for character: 'P' 
+GAME_MSG - Type the number of occurrence for character: 'P' 

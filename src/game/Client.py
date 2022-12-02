@@ -79,7 +79,7 @@ class StrangeClient:
                         # Finds the winner of the game 
                         winner, answer_is_valid = None, None
                         while winner is None: # While there's no winner
-
+                                self.server.get_game_details(self.game_id)
                                 if answer_is_valid is None: # If The player has't given an answer yet
                                         answer_is_valid = self.send_answer(game_details)
                                 
