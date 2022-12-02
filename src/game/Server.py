@@ -119,7 +119,7 @@ class StrangeGameServer:
                 self.players_names.append(player_1) if player_1 != name else self.players_names.append(player_2) 
                 # The game_id is removed from the active games on the server
                 self.active_games_id.remove(game_id)
-                del self.remove_game_details(game_id)
+                self.remove_game_details(game_id)
                 log(type="INFO", msg=f"Player [{name}] has left - Game {game_id} | [{player_1}] vs [{player_2}] Closed")
                 log(type="INFO", msg=f"Active Players: {self.active_players}, Connected Players: {len(self.players_names)}, Active Games: {len(self.active_games_id)}")
             except Exception as e:
