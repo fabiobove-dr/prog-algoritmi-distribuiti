@@ -5,6 +5,7 @@ This Class implements a StrangeClient and its functionalities for the "Strange M
 
 import Pyro4
 import time
+import os
 from utils.logger import log
 
 class StrangeClient:
@@ -63,7 +64,7 @@ class StrangeClient:
                 old_message = None
                 while self.game_id == None:
                         self.opponent, self.game_id = self.server.start_game(self.name)
-                        message = f"Hey {self.name}, your opponent is {self.opponent} - Game: {self.game_id}" if self.opponent else f"Hey {self.name}, wait for your opponent"
+                        message = f"Hey [{self.name}], your opponent is [{self.opponent}] - Game: [{self.game_id}]" if self.opponent else f"Hey [{self.name}], wait for your opponent."
                         if message != old_message:
                                 log(type="GAME_MSG", msg=message)
                         old_message = message
@@ -71,9 +72,11 @@ class StrangeClient:
         def play(self):
                 while self.server.game_is_active(self.game_id):
                         log(type="GAME_MSG", msg="Playing :)")
+                        
                         game_details = self.server.initialize_game(self.game_id, self.name)  
                         log(type="GAME_MSG", msg=f"Long Strange Word: {game_details['long_strange_word']}")
                         
+                        # Finds the winner of the game 
                         winner, answer_is_valid = None, None
                         while winner is None:
                                 if answer_is_valid is None:
@@ -83,21 +86,20 @@ class StrangeClient:
                                         winner = self.server.find_winner(self.game_id)
                                 
                                         if winner is not None:
-                                                log(type="INFO", msg=f"{winner}")
                                                 if self.name in winner:
-                                                        log(type="GAME_MSG", msg=f"Congratulations {winner} - Your anser is correct!!")  
-                                                        printed = True
+                                                        log(type="GAME_MSG", msg=f"Congratulations [{winner}] - Your Won!")  
                                                         return
                                                 else:
                                                         # Close the game and makes the opponent leave
-                                                        log(type="GAME_MSG", msg=f"Oops you lost :(")  
+                                                        log(type="GAME_MSG", msg=f"Oops [{self.name}] you lost! Bye Bye :(")  
                                                         self.leave_game()
                                         else:
                                                  answer_is_valid = None 
                                 
 
         def send_answer(self, game_details):
-                log(type="GAME_MSG", msg=f"Type the number of occurrence for character: {game_details['character_to_find']}")
+                os.system('cls')
+                log(type="GAME_MSG", msg=f"Type the number of occurrence for character: '{game_details['character_to_find']}'")
                 time_start = time.time()
                 answer = input(">> ")
                 time_end = time.time()
@@ -122,6 +124,6 @@ class StrangeClient:
                         input("Previous Game is over - press ENTER to play again.") # Remains in pause waiting for the player response
                         self.player_id = self.server.get_player_id(self.name) # Get a new id for player
                         self.server.activate_player(self.name) # Re-activate the player so if a new opponents is found a new match can start
-                        log(type="GAME_MSG", msg=f"Hey [{self.name}], we are ready for another match - Your new id is {self.player_id}")
+                        log(type="GAME_MSG", msg=f"Hey [{self.name}], ready for another match! - Your new id is {self.player_id}")
 
                 
