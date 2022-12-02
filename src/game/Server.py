@@ -147,17 +147,18 @@ class StrangeGameServer:
         try:
             for game in self.games_details:
                 if game['game_id'] == game_id:
-                    log(type="INFO", msg=f"Game details found for game [{game_id}]")
+                    #log(type="INFO", msg=f"Game details found for game [{game_id}]")
                     return game       
         except Exception as e:
             log(type="INFO", msg=f"Can't get Game details found for game [{game_id}], {e}")
+            return None
 
     def store_player_answer(self, game_id, name, data):
         try:
             for game in self.games_details:
                 if game['game_id'] == game_id:
                     game[name] = data
-                    log(type="INFO", msg=f"Player answer stored for [{game_id}], player [{name}]")
+                    #flog(type="INFO", msg=f"Player answer stored for [{game_id}], player [{name}]")
                     break
         except Exception as e:
             log(type="INFO", msg=f"Can't store player [{name}] answer, for game [{game_id}], {e}")
@@ -183,18 +184,19 @@ class StrangeGameServer:
         # Validate player answer
         answer_is_valid = False
         answer_time = float('inf')
-        
-        occurrence =  int(self.get_games_details(game_id)['occurrence'])
-        try:
-            player_answer = int(self.get_games_details(game_id)[name]['answer'])
-        except Exception as e:
-            player_answer = None
-        
-        if player_answer == occurrence:
-            answer_is_valid = True 
-            answer_time = self.get_games_details(game_id)[name]['total_time']
-            log(type="INFO", msg=f"Player [{name}] answer is valid")
-        log(type="INFO", msg=f"Player [{name}] answer validity checked -> [{occurrence}, {player_answer}] ")
+        game_details = self.get_game_details(game_id)
+        if game_details:
+            occurrence =  int(game_details['details']['occurrence'])
+            try:
+                player_answer = int(game_details[name]['answer'])
+            except Exception as e:
+                player_answer = None
+            
+            if player_answer == occurrence:
+                answer_is_valid = True 
+                answer_time = game_details[name]['total_time']
+                log(type="INFO", msg=f"Player [{name}] answer is valid")
+            log(type="INFO", msg=f"Player [{name}] answer validity checked -> [{occurrence}, {player_answer}] ")
 
         return answer_is_valid, answer_time
         
