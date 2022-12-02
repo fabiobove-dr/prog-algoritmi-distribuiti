@@ -7,6 +7,7 @@ This Class implements a StrangeServer and its functionalities for the "Strange M
 from utils.logger import log
 from game.Game import StrangeGame
 import Pyro4
+import uuid
 
 @Pyro4.expose
 @Pyro4.behavior(instance_mode="single")
@@ -16,6 +17,7 @@ class StrangeGameServer:
         self.active_games_id = [] # List of active games
         self.games_details = [] # List of games details, one dict for each game
         self.active_players = 0 # Number of active player on the server (Note active player != connected player)
+        self.players = []
 
     def check_status(self) -> bool:
         """
@@ -35,6 +37,11 @@ class StrangeGameServer:
         return False
 
     def player_exists(self, name: str) -> bool:
+        try:
+            player_names = [player['name'] for player in self.players]
+        except Exception as e:
+            print(f"mmmmmmmmmm, {e}")
+        print(player_names)
         if name in self.players_names:
             return True
         return False
@@ -43,7 +50,9 @@ class StrangeGameServer:
         try:
             self.players_names.append(name)
             self.active_players += 1
-            player_id = self.active_players
+            player_id = uuid.uuid4()
+            self.players.append({'id': player_id, 'name': name})
+            print(self.players)
             log(type="INFO", msg=f"Player [{name}] added to server")
             return player_id
         except Exception as e:
@@ -85,6 +94,10 @@ class StrangeGameServer:
     def start_game(self, name):
         # If we have an even number of active players on the server we can start a new game
         if self.active_players % 2 == 0 and self.active_players != 0:
+            
+            # Search for games with number of players == 1 -> need to add number of player in games_details
+            # if none found then create new game else update the existing one
+            # when found give the game an unique id based on p1ID + P2ID divided by char | -> so u can use it to recover players id and name from game id
             new_game_id = int((self.active_players / 2))
             log(type="INFO", msg=f"Game id [{new_game_id}]")
             player_1 = self.players_names[-1]  
