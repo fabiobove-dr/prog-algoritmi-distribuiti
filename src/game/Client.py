@@ -87,11 +87,11 @@ class StrangeClient:
                                 
                                         if winner is not None:
                                                 if self.name in winner:
-                                                        log(type="GAME_MSG", msg=f"Congratulations [{winner}] - Your Won!")  
+                                                        log(type="GAME_MSG", msg=f"Congratulations [{winner}] - Your Won! ;)")  
                                                         return
                                                 else:
                                                         # Close the game and makes the opponent leave
-                                                        log(type="GAME_MSG", msg=f"Oops [{self.name}] you lost! Bye Bye :(")  
+                                                        log(type="GAME_MSG", msg=f"Oops [{self.name}] you lost! :(")  
                                                         self.leave_game()
                                         else:
                                                  answer_is_valid = None 
