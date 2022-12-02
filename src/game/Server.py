@@ -1,7 +1,8 @@
 """
-Fabio Bove - 216219@studenti.unimore.it
-Note - 
+Fabio Bove | 216219@studenti.unimore.it | fabio.bove.dr@gmail.com
+This Class implements a StrangeServer and its functionalities for the "Strange Multiplayer Game".
 """
+
 
 from utils.logger import log
 from game.Game import StrangeGame
@@ -11,12 +12,20 @@ import Pyro4
 @Pyro4.behavior(instance_mode="single")
 class StrangeGameServer:
     def __init__(self):
-        self.players_names = []
-        self.active_games_id = []
-        self.games_details = []
-        self.active_players = 0
+        self.players_names = [] # List of players connected to the server
+        self.active_games_id = [] # List of active games
+        self.games_details = [] # List of games details, one dict for each game
+        self.active_players = 0 # Number of active player on the server (Note active player != connected player)
 
-    def check_status(self):
+    def check_status(self) -> bool:
+        """
+        check_status, simple method to check if the server is reachable 
+        prints a log message on the server terminal, if DEBUG is set to True in the logger
+        
+        param: None
+        returns: True (always)
+        """
+        log(type="INFO", msg=f"I'm a [StrangeGameServer] and i'm available to do strange stuff.")
         return True
 
     def game_is_active(self, game_id: int) -> bool:
