@@ -41,7 +41,7 @@ def exit(signal):
     exit function, this function allow to manage the event generated when a player leaves the game
 
     param: signal: The event that called the function
-    retrns: nothing
+    returns: nothing
     """
     global client
     client.leave_game()
