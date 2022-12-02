@@ -13,6 +13,7 @@ class StrangeClient:
                 self.server = None
                 self.name = None
                 self.game_id = None
+                self.game_details = None
                 self.player_id = None
                 self.connected = False
                 self.opponent = None
@@ -73,15 +74,16 @@ class StrangeClient:
                 while self.server.game_is_active(self.game_id):
                         log(type="GAME_MSG", msg="Playing :)")
                         
-                        game_details = self.server.initialize_game(self.game_id, self.name)  
-                        log(type="GAME_MSG", msg=f"Long Strange Word: {game_details['long_strange_word']}")
+                        game = self.server.initialize_game(self.game_id, self.name)  
+                        self.game_details = game['details']
+                        log(type="GAME_MSG", msg=f"Long Strange Word: {self.game_details['long_strange_word']}")
                         
                         # Finds the winner of the game 
                         winner, answer_is_valid = None, None
                         while winner is None: # While there's no winner
                                 self.server.get_game_details(self.game_id)
                                 if answer_is_valid is None: # If The player has't given an answer yet
-                                        answer_is_valid = self.send_answer(game_details)
+                                        answer_is_valid = self.send_answer()
                                 
                                 if self.server.both_player_answered(self.game_id): # If both player have answered we can check if ther is a winner
                                         winner = self.server.find_winner(self.game_id) # Finds the winner or check for tie
@@ -96,9 +98,9 @@ class StrangeClient:
                                                  answer_is_valid = None 
                                 
 
-        def send_answer(self, game_details) -> bool:
+        def send_answer(self) -> bool:
                 os.system('cls') # Clean the screen from previous messages
-                log(type="GAME_MSG", msg=f"Type the number of occurrence for character: '{game_details['character_to_find']}'")
+                log(type="GAME_MSG", msg=f"Type the number of occurrence for character: '{self.game_details['character_to_find']}'")
                 
                 time_start = time.time() # Timer is started for performance evaluation and see which player is the fastest
                 answer = input(">> ") # Takes the player answer
@@ -106,7 +108,7 @@ class StrangeClient:
                 total_time =  round(time_end - time_start, 4) # We round the time results to the forth decimal, should be enought 
 
                 player_answer = {'answer': answer, 'total_time': total_time} # Creates a dict with the player answer details: time and given number of occurrence
-                log(type="GAME_MSG", msg=f"You said in {total_time}s that the word has {player_answer['answer']} occurence for char {game_details['character_to_find']}")
+                log(type="GAME_MSG", msg=f"You said in {total_time}s that the word has {player_answer['answer']} occurence for char {self.game_details['character_to_find']}")
                 
                 # Check the validity of the player answer and print a message depending on the validity
                 answer_is_valid, _ = self.server.validate_answer(self.game_id, self.name, data=player_answer)
