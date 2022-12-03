@@ -14,7 +14,6 @@ class StrangeClient:
                 self.name = None
                 self.game_id = None
                 self.game_details = None
-                self.player_id = None
                 self.connected = False
                 self.opponent = None
 
@@ -57,9 +56,9 @@ class StrangeClient:
                         self.name = input("What is your name?").strip()
                         while self.server.player_exists(self.name):
                                 self.name = input("This nickname is already in use, try again: ").strip()
-                        self.player_id = self.server.add_player(self.name)
+                        self.server.add_player(self.name)
                         self.connected = True
-                return self.name, self.player_id
+                return self.name
         
         def load_game(self):
                 old_message = None
@@ -125,10 +124,9 @@ class StrangeClient:
                 returns: None
                 """
                 if self.connected: # If the player is connected to the server
-                        self.game_id,  self.player_id = None, None # Reset the player and game ids
+                        self.game_id = None # Reset the player and game ids
                         input("Previous Game is over - press ENTER to play again.") # Remains in pause waiting for the player response
-                        self.player_id = self.server.get_player_id(self.name) # Get a new id for player
                         self.server.activate_player(self.name) # Re-activate the player so if a new opponents is found a new match can start
-                        log(type="GAME_MSG", msg=f"Hey [{self.name}], ready for another match! - Your new id is {self.player_id}")
+                        log(type="GAME_MSG", msg=f"Hey [{self.name}], ready for another match!")
 
                 

@@ -28,8 +28,8 @@ def main():
     os.system('cls') # Clean the screen
     client = StrangeClient()  # Initialize the client, connecting to the server of the game
     client.connect_to_server(server_uri="PYRONAME:StrangeGameServer") 
-    name, player_id = client.welcome() # Print the welcome message and register the player on the server asking for an username
-    log(type="GAME_MSG", msg=f"Hello {name}, you are player number {player_id}")
+    name = client.welcome() # Print the welcome message and register the player on the server asking for an username
+    log(type="GAME_MSG", msg=f"Hello {name}, welcome to the Strange Game")
 
     while client.is_connected(): # Until the player remains connected or don't lose a match
         client.load_game() # Try to create a match between two users

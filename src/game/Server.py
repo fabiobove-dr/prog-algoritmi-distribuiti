@@ -36,27 +36,17 @@ class StrangeGameServer:
         return False
 
     def player_exists(self, name: str) -> bool:
-        try:
-            player_names = [player['name'] for player in self.players]
-        except Exception as e:
-            print(f"mmmmmmmmmm, {e}")
-        print(player_names)
-        if name in self.players_names:
+        if name in self.players:
             return True
         return False
 
-    def add_player(self, name: str) -> int or None:
+    def add_player(self, name: str):
         try:
-            self.players_names.append(name)
-            self.active_players += 1
-            #player_id = uuid.uuid4()
             self.players.append(name)
-            print(self.players)
+            self.active_players += 1
             log(type="INFO", msg=f"Player [{name}] added to server")
-            return name
         except Exception as e:
             log(type="ERROR", msg=f"Can't add player [{name}], {e}")
-            return None()
     
     def activate_player(self, name):
         self.active_players += 1
