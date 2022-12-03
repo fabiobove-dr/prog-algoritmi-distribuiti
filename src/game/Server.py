@@ -13,11 +13,10 @@ import uuid
 @Pyro4.behavior(instance_mode="single")
 class StrangeGameServer:
     def __init__(self):
-        self.players_names = [] # List of players connected to the server
         self.active_games_id = [] # List of active games
         self.games_details = [] # List of games details, one dict for each game
         self.active_players = 0 # Number of active player on the server (Note active player != connected player)
-        self.players = []
+        self.players = [] # List of players connected to the server
 
     def check_status(self) -> bool:
         """
@@ -50,68 +49,81 @@ class StrangeGameServer:
         try:
             self.players_names.append(name)
             self.active_players += 1
-            player_id = uuid.uuid4()
-            self.players.append({'id': player_id, 'name': name})
+            #player_id = uuid.uuid4()
+            self.players.append(name)
             print(self.players)
             log(type="INFO", msg=f"Player [{name}] added to server")
-            return player_id
+            return name
         except Exception as e:
             log(type="ERROR", msg=f"Can't add player [{name}], {e}")
             return None()
     
     def activate_player(self, name):
         self.active_players += 1
-        player_id = self.active_players
         log(type="INFO", msg=f"Player [{name}] re-activated")
-        return player_id
 
     def remove_player(self, name: str):
         try:
-            self.players_names.remove(name)
+            self.players.remove(name)
             self.active_players -= 1
             log(type="INFO", msg=f"Player [{name}] removed from server")
         except Exception as e:
            log(type="ERROR", msg=f"Can't remove player [{name}], {e}")
 
-    def get_players_name_from_game_id(self, game_id): 
-        # If at least two players are connected, otherwhise an error will occure
-        # because we try to access an element of the list which doesn't exists (in case we have only one player)
-        # if len(self.active_players) > 1 and game_id is not None:
+    
+    def get_players_of_game(self, game_id):
         try:
-            player_1_id = (game_id * 2) - 1
-            player_2_id = (game_id * 2) - 2
-            # log(type="INFO", msg=f"Players ids [{player_1_id}, {player_2_id}]")
-            player_1 = self.players_names[player_1_id]  
-            player_2 = self.players_names[player_2_id]
-            return player_1, player_2
+            for game in self.games_details:
+                if game['game_id'] == game_id:
+                    log(type="INFO", msg=f"Player of game {game_id} are: {game['players']}")
+                    return game['players']
         except Exception as e:
-            log(type="ERROR", msg=f"Can't get players id, {e}")
-            return None, None
+                log(type="ERROR", msg=f" Can't get player of game {game_id}, {e}")
+                return None
 
-    def get_player_id(self, name):
-        return self.players_names.index(name)
+    def search_for_game(self):
+        for game in self.games_details:
+            try:
+                if len(game['players']) == 1:
+                    return game['game_id']
+            except Exception as e:
+                pass
+        return None
+
+    def add_player_to_game(self, game_id, name):
+        try:
+            for game in self.games_details:
+                if game['game_id'] == game_id:
+                    game['players'].append(name)
+        except Exception as e:
+                log(type="ERROR", msg=f" Can't add new player to game {game_id}, {e}")
+
+    def add_new_game(self, game_id, name):
+        self.active_games_id.append(game_id)
+        game = StrangeGame(game_id, game_complexity=50)
+        self.games_details.append({''})
+        self.games_details.append({
+            'game_id': game_id, 
+            'details': game.configure_game(),
+            'players': [name],
+        })
+        log(type="INFO", msg=f"Game details: {self.get_game_details(game_id)}")
+
 
     def start_game(self, name):
         # If we have an even number of active players on the server we can start a new game
         if self.active_players % 2 == 0 and self.active_players != 0:
-            
-            # Search for games with number of players == 1 -> need to add number of player in games_details
-            # if none found then create new game else update the existing one
-            # when found give the game an unique id based on p1ID + P2ID divided by char | -> so u can use it to recover players id and name from game id
-            new_game_id = int((self.active_players / 2))
-            log(type="INFO", msg=f"Game id [{new_game_id}]")
-            player_1 = self.players_names[-1]  
-            player_2 = self.players_names[-2]
-            opponent = player_2 if name == player_1 else player_1
-            # This prevent to be start two time a new game with the same id
-            if new_game_id not in self.active_games_id:
-                log(type="INFO", msg=f"New Game [{new_game_id}] Started between [{player_1}] vs [{player_2}]")
-                self.active_games_id.append(new_game_id)
-                # Configure the game 
-                game = StrangeGame(new_game_id, game_complexity=50)
-                self.games_details.append({'game_id': new_game_id, 'details': game.configure_game()})
-                log(type="INFO", msg=f"Game details: {self.games_details[-1]}")
-            return  opponent, new_game_id
+            game_id = self.search_for_game() # This prevent to be start two time a new game - one for each opponent
+            if game_id: 
+                self.add_player_to_game(game_id, name)
+                player_1, player_2 = self.get_players_of_game(game_id)
+                opponent = player_2 if name == player_1 else player_1
+                log(type="INFO", msg=f"New Game started between [{player_1}] vs [{player_2}] - Game ID: [{game_id}]")
+            else:
+                game_id = uuid.uuid4()
+                self.add_new_game(game_id, name)
+                log(type="INFO", msg=f"Game id [{game_id}]")
+            return  opponent, game_id
         else:
             return None, None
 
@@ -123,7 +135,7 @@ class StrangeGameServer:
         else:
             try:
                 # Get the opponents names from the game_id
-                player_1, player_2 = self.get_players_name_from_game_id(game_id)
+                player_1, player_2 = self.get_players_of_game(game_id)
                 # Remove both players from the active players count
                 self.active_players -=2
                 self.players_names.remove(player_1)
@@ -150,7 +162,7 @@ class StrangeGameServer:
         return details
 
     def both_player_answered(self, game_id):
-        player_1, player_2 = self.get_players_name_from_game_id(game_id)
+        player_1, player_2 = self.get_players_of_game(game_id)
         return self.player_answered(player_1, game_id) and self.player_answered(player_2, game_id) 
     
     def player_answered(self, name, game_id):
@@ -216,7 +228,7 @@ class StrangeGameServer:
     def find_winner(self, game_id):
         # Gets the players name
         winner = None
-        player_1, player_2 = self.get_players_name_from_game_id(game_id)
+        player_1, player_2 = self.get_players_of_game(game_id)
         # If both players have given an answer
         if self.both_player_answered(game_id):
             # Check if their answer are valid
