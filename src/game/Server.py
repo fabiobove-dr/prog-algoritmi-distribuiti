@@ -29,16 +29,14 @@ class StrangeGameServer:
         log(type="INFO", msg=f"I'm a [StrangeGameServer] and i'm available to do strange stuff.")
         return True
 
-    def game_is_active(self, game_id: int) -> bool:
+    def game_is_active(self, game_id: str) -> bool:
         log(type="INFO", msg=f"Check the status of game {game_id}")
-        if game_id in self.active_games:
-            return True
-        return False
+        print(f"p{game_id}")
+        print(f"provaaaa {self.active_games}")
+        return True if game_id in self.active_games else False
 
     def player_exists(self, name: str) -> bool:
-        if name in self.players:
-            return True
-        return False
+        return True if name in self.players else False
 
     def add_player(self, name: str):
         try:
@@ -59,13 +57,12 @@ class StrangeGameServer:
             log(type="INFO", msg=f"Player [{name}] removed from server")
         except Exception as e:
            log(type="ERROR", msg=f"Can't remove player [{name}], {e}")
-
     
     def get_players_of_game(self, game_id):
         try:
             for game in self.games_details:
                 if game['game_id'] == game_id:
-                    log(type="INFO", msg=f"Player of game {game_id} are: {game['players']}")
+                    #log(type="INFO", msg=f"Player of game {game_id} are: {game['players']}")
                     return game['players']
         except Exception as e:
                 log(type="ERROR", msg=f" Can't get player of game {game_id}, {e}")
@@ -73,11 +70,8 @@ class StrangeGameServer:
 
     def search_for_game(self):
         for game in self.games_details:
-            try:
                 if len(game['players']) == 1:
                     return game['game_id']
-            except Exception as e:
-                pass
         return None
 
     def add_player_to_game(self, game_id, name):
@@ -86,35 +80,37 @@ class StrangeGameServer:
                 if game['game_id'] == game_id:
                     game['players'].append(name)
         except Exception as e:
-                log(type="ERROR", msg=f" Can't add new player to game {game_id}, {e}")
+                log(type="ERROR", msg=f"Can't add new player to game {game_id}, {e}")
 
-    def add_new_game(self, game_id, name):
-        self.active_games.append(game_id)
-        game = StrangeGame(game_number=self.active_games, game_id=game_id, game_complexity=50)
+    def add_new_game_details(self, game_id, name):
+        game = StrangeGame(game_number=len(self.active_games), game_id=game_id, game_complexity=50)
         self.games_details.append({
             'game_id': game_id, 
             'details': game.configure_game(),
             'players': [name],
         })
         log(type="INFO", msg=f"Game details: {self.get_game_details(game_id)}")
-
+    
+    def a_game_is_available(self):
+        return True if int(self.active_players / 2 ) == len(self.active_games) else False
 
     def start_game(self, name):
-        # If we have an even number of active players on the server we can start a new game
+        game_id = None
         if self.active_players % 2 == 0 and self.active_players != 0:
-            game_id = self.search_for_game() # This prevent to be start two time a new game - one for each opponent
-            if game_id: 
+            if self.a_game_is_available(): # This prevent to start two time a new game
+                while game_id is None:
+                    try:
+                        game_id = self.search_for_game()
+                    except Exception:
+                        pass
+                log(type="INFO", msg=f"New Game started for player [{name}]- Game ID: [{game_id}]")
                 self.add_player_to_game(game_id, name)
-                player_1, player_2 = self.get_players_of_game(game_id)
-                opponent = player_2 if name == player_1 else player_1
-                log(type="INFO", msg=f"New Game started between [{player_1}] vs [{player_2}] - Game ID: [{game_id}]")
             else:
-                game_id = uuid.uuid4()
-                self.add_new_game(game_id, name)
-                log(type="INFO", msg=f"Game id [{game_id}]")
-            return  opponent, game_id
-        else:
-            return None, None
+                game_id = str(uuid.uuid4())
+                self.active_games.append(game_id)
+                self.add_new_game_details(game_id, name)
+        return game_id
+
 
     def close_game(self, game_id, name):
         # If a player leaves before the opponent joined than the "game_id" is going to be "None"

@@ -63,8 +63,13 @@ class StrangeClient:
         def load_game(self):
                 old_message = None
                 while self.game_id == None:
-                        self.opponent, self.game_id = self.server.start_game(self.name)
-                        message = f"Hey [{self.name}], your opponent is [{self.opponent}] - Game: [{self.game_id}]" if self.opponent else f"Hey [{self.name}], wait for your opponent."
+                        self.game_id = self.server.start_game(self.name)
+                        players = self.server.get_players_of_game(self.game_id)
+                        if players:
+                                self.opponent = players.remove(self.name)
+                                message = f"Hey [{self.name}], your opponent is [{self.opponent}] - Game: [{self.game_id}]" 
+                        else:
+                                message = f"Hey [{self.name}], wait for your opponent."      
                         if message != old_message:
                                 log(type="GAME_MSG", msg=message)
                         old_message = message
