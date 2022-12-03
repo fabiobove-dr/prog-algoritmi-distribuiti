@@ -1,0 +1,248 @@
+GAME_MSG - StrangeGameServer - server started. 
+GAME_MSG - Connecting to StrangeGameServer... 
+GAME_MSG - Connecting to StrangeGameServer... 
+INFO - I'm a [StrangeGameServer] and i'm available to do strange stuff. 
+GAME_MSG - Connected to StrangeGameServer... 
+INFO - I'm a [StrangeGameServer] and i'm available to do strange stuff. 
+GAME_MSG - Connected to StrangeGameServer... 
+GAME_MSG - Connecting to StrangeGameServer... 
+GAME_MSG - Connecting to StrangeGameServer... 
+INFO - I'm a [StrangeGameServer] and i'm available to do strange stuff. 
+GAME_MSG - Connected to StrangeGameServer... 
+INFO - Player [00] added to server 
+GAME_MSG - Hello 00, welcome to the Strange Game 
+GAME_MSG - Hey [00], wait for your opponent. 
+INFO - Player [01] added to server 
+INFO - Started a new game configuration 
+GAME_MSG - Hello 01, welcome to the Strange Game 
+INFO - Base word generated with game_complexity: 50 
+INFO - Long Strange Word created. 
+INFO - Choose the character to find and calculated its occurrence. 
+INFO - Game details: {'game_id': 'd1daefb5-d769-42cb-9d72-21e5c5ab497e', 'details': {'game_complexity': 50, 'long_strange_word': 'Y8G4K9TGOT8VMZN4AEZ7FL5MC28RFQV9NXWF57JYSVTB7E3E35', 'character_to_find': 'A', 'occurrence': 1}, 'players': ['00']} 
+INFO - New Game started for player [01]- Game ID: [d1daefb5-d769-42cb-9d72-21e5c5ab497e] 
+GAME_MSG - Hey [00], your opponent is [None] - Game: [d1daefb5-d769-42cb-9d72-21e5c5ab497e] 
+GAME_MSG - Hey [01], your opponent is [None] - Game: [d1daefb5-d769-42cb-9d72-21e5c5ab497e] 
+INFO - Check the status of game d1daefb5-d769-42cb-9d72-21e5c5ab497e 
+INFO - Check the status of game d1daefb5-d769-42cb-9d72-21e5c5ab497e 
+GAME_MSG - Playing :) 
+GAME_MSG - Playing :) 
+INFO - Active Games: ['d1daefb5-d769-42cb-9d72-21e5c5ab497e'] 
+INFO - Active Games: ['d1daefb5-d769-42cb-9d72-21e5c5ab497e'] 
+INFO - Details for game [d1daefb5-d769-42cb-9d72-21e5c5ab497e] obtained for player [00] 
+INFO - Details for game [d1daefb5-d769-42cb-9d72-21e5c5ab497e] obtained for player [01] 
+GAME_MSG - Long Strange Word: Y8G4K9TGOT8VMZN4AEZ7FL5MC28RFQV9NXWF57JYSVTB7E3E35 
+GAME_MSG - Long Strange Word: Y8G4K9TGOT8VMZN4AEZ7FL5MC28RFQV9NXWF57JYSVTB7E3E35 
+GAME_MSG - Type the number of occurrence for character: 'A' 
+INFO - I'm a [StrangeGameServer] and i'm available to do strange stuff. 
+GAME_MSG - Connected to StrangeGameServer... 
+INFO - Player [02] added to server 
+GAME_MSG - Hello 02, welcome to the Strange Game 
+GAME_MSG - Hey [02], wait for your opponent. 
+INFO - Player [03] added to server 
+INFO - Started a new game configuration 
+GAME_MSG - Hello 03, welcome to the Strange Game 
+ 
+INFO - Long Strange Word created. 
+INFO - Choose the character to find and calculated its occurrence. 
+INFO - Game details: {'game_id': 'b9e282b4-3d80-478a-a0c4-d8ff78958c34', 'details': {'game_complexity': 50, 'long_strange_word': 'PYBYMZ82LTPYRGCQCPNHSEI23W20TOR80IJPCNFEX2OG2YMXX0', 'character_to_find': '8', 'occurrence': 2}, 'players': ['02']} 
+INFO - New Game started for player [03]- Game ID: [b9e282b4-3d80-478a-a0c4-d8ff78958c34] 
+GAME_MSG - Hey [02], your opponent is [None] - Game: [b9e282b4-3d80-478a-a0c4-d8ff78958c34] 
+GAME_MSG - Hey [03], your opponent is [None] - Game: [b9e282b4-3d80-478a-a0c4-d8ff78958c34] 
+INFO - Check the status of game b9e282b4-3d80-478a-a0c4-d8ff78958c34 
+INFO - Check the status of game b9e282b4-3d80-478a-a0c4-d8ff78958c34 
+GAME_MSG - Playing :) 
+GAME_MSG - Playing :) 
+INFO - Active Games: ['d1daefb5-d769-42cb-9d72-21e5c5ab497e', 'b9e282b4-3d80-478a-a0c4-d8ff78958c34'] 
+INFO - Active Games: ['d1daefb5-d769-42cb-9d72-21e5c5ab497e', 'b9e282b4-3d80-478a-a0c4-d8ff78958c34'] 
+INFO - Details for game [b9e282b4-3d80-478a-a0c4-d8ff78958c34] obtained for player [02] 
+INFO - Details for game [b9e282b4-3d80-478a-a0c4-d8ff78958c34] obtained for player [03] 
+GAME_MSG - Long Strange Word: PYBYMZ82LTPYRGCQCPNHSEI23W20TOR80IJPCNFEX2OG2YMXX0 
+GAME_MSG - Long Strange Word: PYBYMZ82LTPYRGCQCPNHSEI23W20TOR80IJPCNFEX2OG2YMXX0 
+GAME_MSG - Type the number of occurrence for character: '8' 
+GAME_MSG - You said in 2.3677s that the word has 1 occurence for char 8 
+INFO - Player [03] stored correctly 
+INFO - Player [03] answer validity checked -> [2, 1]  
+GAME_MSG - Sorry, you provide a wrong number of occurrence... 
+GAME_MSG - You said in 4.4632s that the word has 2 occurence for char 8 
+INFO - Player [02] stored correctly 
+INFO - Player [02] answer is valid 
+INFO - Player [02] answer is valid 
+INFO - Player [02] answer validity checked -> [2, 2]  
+INFO - Player [02] answer validity checked -> [2, 2]  
+INFO - Player [03] answer validity checked -> [2, 1]  
+GAME_MSG - Yeah, you provide the correct number of occurrence - Let's see if fast enought... 
+INFO - Times [4.4632 vs inf] 
+GAME_MSG - Oops [03] you lost! :( 
+INFO - Player [02] answer is valid 
+INFO - Game details removed for game [b9e282b4-3d80-478a-a0c4-d8ff78958c34] 
+INFO - Player [02] answer validity checked -> [2, 2]  
+INFO - Player [03] has left - Game b9e282b4-3d80-478a-a0c4-d8ff78958c34 | Closed 
+INFO - Player [03] answer validity checked -> [2, 1]  
+INFO - Active Players: 2, Connected Players: 3, Active Games: 1 
+INFO - Times [4.4632 vs inf] 
+GAME_MSG - Bye [03], game left! 
+GAME_MSG - Congratulations [['02']] - Your Won! ;) 
+INFO - Check the status of game b9e282b4-3d80-478a-a0c4-d8ff78958c34 
+GAME_MSG - You said in 13.0288s that the word has 2 occurence for char A 
+INFO - Player [00] stored correctly 
+INFO - Player [00] answer validity checked -> [1, 2]  
+GAME_MSG - Sorry, you provide a wrong number of occurrence... 
+GAME_MSG - You said in 14.8365s that the word has 3 occurence for char A 
+INFO - Player [01] stored correctly 
+INFO - Player [01] answer validity checked -> [1, 3]  
+INFO - Player [00] answer validity checked -> [1, 2]  
+INFO - Player [01] answer validity checked -> [1, 3]  
+GAME_MSG - Sorry, you provide a wrong number of occurrence... 
+INFO - Player [00] answer validity checked -> [1, 2]  
+INFO - Player [01] answer validity checked -> [1, 3]  
+GAME_MSG - Type the number of occurrence for character: 'A' 
+GAME_MSG - Type the number of occurrence for character: 'A' 
+GAME_MSG - You said in 1.2641s that the word has 1 occurence for char A 
+INFO - Player [01] stored correctly 
+INFO - Player [01] answer is valid 
+INFO - Player [01] answer validity checked -> [1, 1]  
+GAME_MSG - Yeah, you provide the correct number of occurrence - Let's see if fast enought... 
+INFO - Player [00] answer validity checked -> [1, 2]  
+INFO - Player [01] answer is valid 
+INFO - Player [01] answer validity checked -> [1, 1]  
+INFO - Times [inf vs 1.2641] 
+GAME_MSG - Congratulations [['01']] - Your Won! ;) 
+INFO - Player [01] re-activated 
+GAME_MSG - Hey [01], ready for another match! 
+GAME_MSG - Hey [01], wait for your opponent. 
+INFO - Player [02] re-activated 
+INFO - Started a new game configuration 
+INFO - Base word generated with game_complexity: 50 
+GAME_MSG - Hey [02], ready for another match! 
+INFO - Long Strange Word created. 
+INFO - Choose the character to find and calculated its occurrence. 
+INFO - Game details: {'game_id': '70e0014c-c645-4786-8bfa-229467377e1b', 'details': {'game_complexity': 50, 'long_strange_word': 'QMD0YDLVE3317CCW45AUCXILXFXXAPSH7KHM25YN69DGXP2ZRB', 'character_to_find': 'A', 'occurrence': 2}, 'players': ['01']} 
+INFO - New Game started for player [02]- Game ID: [70e0014c-c645-4786-8bfa-229467377e1b] 
+GAME_MSG - Hey [02], your opponent is [None] - Game: [70e0014c-c645-4786-8bfa-229467377e1b] 
+GAME_MSG - Hey [01], your opponent is [None] - Game: [70e0014c-c645-4786-8bfa-229467377e1b] 
+INFO - Check the status of game 70e0014c-c645-4786-8bfa-229467377e1b 
+INFO - Check the status of game 70e0014c-c645-4786-8bfa-229467377e1b 
+GAME_MSG - Playing :) 
+GAME_MSG - Playing :) 
+INFO - Active Games: ['d1daefb5-d769-42cb-9d72-21e5c5ab497e', '70e0014c-c645-4786-8bfa-229467377e1b'] 
+INFO - Active Games: ['d1daefb5-d769-42cb-9d72-21e5c5ab497e', '70e0014c-c645-4786-8bfa-229467377e1b'] 
+INFO - Details for game [70e0014c-c645-4786-8bfa-229467377e1b] obtained for player [02] 
+INFO - Details for game [70e0014c-c645-4786-8bfa-229467377e1b] obtained for player [01] 
+GAME_MSG - Long Strange Word: QMD0YDLVE3317CCW45AUCXILXFXXAPSH7KHM25YN69DGXP2ZRB 
+GAME_MSG - Long Strange Word: QMD0YDLVE3317CCW45AUCXILXFXXAPSH7KHM25YN69DGXP2ZRB 
+GAME_MSG - Type the number of occurrence for character: 'A' 
+GAME_MSG - Type the number of occurrence for character: 'A' 
+GAME_MSG - You said in 1.2872s that the word has 1 occurence for char A 
+INFO - Player [02] stored correctly 
+INFO - Player [02] answer validity checked -> [2, 1]  
+GAME_MSG - Sorry, you provide a wrong number of occurrence... 
+GAME_MSG - You said in 3.2072s that the word has 2 occurence for char A 
+INFO - Player [01] stored correctly 
+INFO - Player [01] answer is valid 
+INFO - Player [01] answer is valid 
+INFO - Player [01] answer validity checked -> [2, 2]  
+INFO - Player [01] answer validity checked -> [2, 2]  
+INFO - Player [02] answer validity checked -> [2, 1]  
+GAME_MSG - Yeah, you provide the correct number of occurrence - Let's see if fast enought... 
+INFO - Times [3.2072 vs inf] 
+INFO - Player [01] answer is valid 
+GAME_MSG - Oops [02] you lost! :( 
+INFO - Player [01] answer validity checked -> [2, 2]  
+INFO - Game details removed for game [70e0014c-c645-4786-8bfa-229467377e1b] 
+INFO - Player [02] answer validity checked -> [2, 1]  
+INFO - Player [02] has left - Game 70e0014c-c645-4786-8bfa-229467377e1b | Closed 
+INFO - Times [3.2072 vs inf] 
+INFO - Active Players: 2, Connected Players: 2, Active Games: 1 
+GAME_MSG - Congratulations [['01']] - Your Won! ;) 
+GAME_MSG - Bye [02], game left! 
+INFO - Check the status of game 70e0014c-c645-4786-8bfa-229467377e1b 
+GAME_MSG - You said in 13.1617s that the word has 1 occurence for char A 
+INFO - Player [00] stored correctly 
+INFO - Player [00] answer is valid 
+INFO - Player [00] answer validity checked -> [1, 1]  
+GAME_MSG - Yeah, you provide the correct number of occurrence - Let's see if fast enought... 
+INFO - Player [00] answer is valid 
+INFO - Player [00] answer validity checked -> [1, 1]  
+INFO - Player [01] answer is valid 
+INFO - Player [01] answer validity checked -> [1, 1]  
+INFO - Times [13.1617 vs 1.2641] 
+GAME_MSG - Oops [00] you lost! :( 
+INFO - Game details removed for game [d1daefb5-d769-42cb-9d72-21e5c5ab497e] 
+INFO - Player [00] has left - Game d1daefb5-d769-42cb-9d72-21e5c5ab497e | Closed 
+INFO - Active Players: 0, Connected Players: 1, Active Games: 0 
+GAME_MSG - Bye [00], game left! 
+INFO - Check the status of game d1daefb5-d769-42cb-9d72-21e5c5ab497e 
+GAME_MSG - Connecting to StrangeGameServer... 
+INFO - Player [01] re-activated 
+GAME_MSG - Hey [01], ready for another match! 
+GAME_MSG - Hey [01], wait for your opponent. 
+INFO - I'm a [StrangeGameServer] and i'm available to do strange stuff. 
+GAME_MSG - Connected to StrangeGameServer... 
+INFO - Player [04] added to server 
+INFO - Started a new game configuration 
+GAME_MSG - Hello 04, welcome to the Strange Game 
+INFO - Base word generated with game_complexity: 50 
+INFO - Long Strange Word created. 
+INFO - Choose the character to find and calculated its occurrence. 
+INFO - Game details: {'game_id': 'f78e1da9-4721-41a8-8ed3-24754d05be11', 'details': {'game_complexity': 50, 'long_strange_word': 'IQCGLFG4J0N8W94MI1F0GLEUB55VJOZUAM5CAD8646ZV6BXDFJ', 'character_to_find': 'I', 'occurrence': 2}, 'players': ['01']} 
+INFO - New Game started for player [04]- Game ID: [f78e1da9-4721-41a8-8ed3-24754d05be11] 
+GAME_MSG - Hey [01], your opponent is [None] - Game: [f78e1da9-4721-41a8-8ed3-24754d05be11] 
+GAME_MSG - Hey [04], your opponent is [None] - Game: [f78e1da9-4721-41a8-8ed3-24754d05be11] 
+INFO - Check the status of game f78e1da9-4721-41a8-8ed3-24754d05be11 
+INFO - Check the status of game f78e1da9-4721-41a8-8ed3-24754d05be11 
+GAME_MSG - Playing :) 
+GAME_MSG - Playing :) 
+INFO - Active Games: ['f78e1da9-4721-41a8-8ed3-24754d05be11'] 
+INFO - Active Games: ['f78e1da9-4721-41a8-8ed3-24754d05be11'] 
+INFO - Details for game [f78e1da9-4721-41a8-8ed3-24754d05be11] obtained for player [01] 
+INFO - Details for game [f78e1da9-4721-41a8-8ed3-24754d05be11] obtained for player [04] 
+GAME_MSG - Long Strange Word: IQCGLFG4J0N8W94MI1F0GLEUB55VJOZUAM5CAD8646ZV6BXDFJ 
+GAME_MSG - Long Strange Word: IQCGLFG4J0N8W94MI1F0GLEUB55VJOZUAM5CAD8646ZV6BXDFJ 
+GAME_MSG - Type the number of occurrence for character: 'I' 
+GAME_MSG - You said in 1.2174s that the word has 1 occurence for char I 
+INFO - Player [04] stored correctly 
+INFO - Player [04] answer validity checked -> [2, 1]  
+GAME_MSG - Sorry, you provide a wrong number of occurrence... 
+GAME_MSG - You said in 3.0128s that the word has 3 occurence for char I 
+INFO - Player [01] stored correctly 
+INFO - Player [01] answer validity checked -> [2, 3]  
+INFO - Player [01] answer validity checked -> [2, 3]  
+GAME_MSG - Sorry, you provide a wrong number of occurrence... 
+INFO - Player [04] answer validity checked -> [2, 1]  
+INFO - Player [01] answer validity checked -> [2, 3]  
+INFO - Player [04] answer validity checked -> [2, 1]  
+GAME_MSG - Type the number of occurrence for character: 'I' 
+GAME_MSG - You said in 0.8646s that the word has 1 occurence for char I 
+INFO - Player [01] stored correctly 
+INFO - Player [01] answer validity checked -> [2, 1]  
+GAME_MSG - Sorry, you provide a wrong number of occurrence... 
+INFO - Player [01] answer validity checked -> [2, 1]  
+INFO - Player [04] answer validity checked -> [2, 1]  
+GAME_MSG - Type the number of occurrence for character: 'I' 
+GAME_MSG - You said in 2.0634s that the word has 2 occurence for char I 
+INFO - Player [01] stored correctly 
+INFO - Player [01] answer is valid 
+INFO - Player [01] answer validity checked -> [2, 2]  
+GAME_MSG - Yeah, you provide the correct number of occurrence - Let's see if fast enought... 
+INFO - Player [01] answer is valid 
+INFO - Player [01] answer validity checked -> [2, 2]  
+INFO - Player [04] answer validity checked -> [2, 1]  
+INFO - Times [2.0634 vs inf] 
+GAME_MSG - Congratulations [['01']] - Your Won! ;) 
+GAME_MSG - You said in 6.0742s that the word has 1 occurence for char I 
+INFO - Player [04] stored correctly 
+INFO - Player [04] answer validity checked -> [2, 1]  
+GAME_MSG - Sorry, you provide a wrong number of occurrence... 
+INFO - Player [01] answer is valid 
+INFO - Player [01] answer validity checked -> [2, 2]  
+INFO - Player [04] answer validity checked -> [2, 1]  
+INFO - Times [2.0634 vs inf] 
+GAME_MSG - Oops [04] you lost! :( 
+INFO - Game details removed for game [f78e1da9-4721-41a8-8ed3-24754d05be11] 
+INFO - Player [04] has left - Game f78e1da9-4721-41a8-8ed3-24754d05be11 | Closed 
+INFO - Active Players: 0, Connected Players: 1, Active Games: 0 
+GAME_MSG - Bye [04], game left! 
+INFO - Check the status of game f78e1da9-4721-41a8-8ed3-24754d05be11 
+INFO - Player [01] re-activated 
+GAME_MSG - Hey [01], ready for another match! 
+GAME_MSG - Hey [01], wait for your opponent. 
