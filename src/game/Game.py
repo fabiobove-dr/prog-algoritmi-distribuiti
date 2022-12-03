@@ -4,12 +4,13 @@ import time
 from utils.logger import log
 
 class StrangeGame:
-        def __init__(self, game_id, game_complexity):
-                self.word_seed = random.seed(game_id + time.time())
+        def __init__(self, game_number, game_id, game_complexity):
+                self.word_seed = random.seed(game_number + time.time())
                 self.game_complexity = game_complexity
                 self.long_strange_word = None
                 self.character_to_find = None
-                self.occurrence = None        
+                self.occurrence = None
+                self.game_id = game_id        
 
         def generate_word(self):
                 try:

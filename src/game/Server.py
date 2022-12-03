@@ -13,7 +13,7 @@ import uuid
 @Pyro4.behavior(instance_mode="single")
 class StrangeGameServer:
     def __init__(self):
-        self.active_games_id = [] # List of active games
+        self.active_games = [] # List of active games
         self.games_details = [] # List of games details, one dict for each game
         self.active_players = 0 # Number of active player on the server (Note active player != connected player)
         self.players = [] # List of players connected to the server
@@ -31,7 +31,7 @@ class StrangeGameServer:
 
     def game_is_active(self, game_id: int) -> bool:
         log(type="INFO", msg=f"Check the status of game {game_id}")
-        if game_id in self.active_games_id:
+        if game_id in self.active_games:
             return True
         return False
 
@@ -89,9 +89,8 @@ class StrangeGameServer:
                 log(type="ERROR", msg=f" Can't add new player to game {game_id}, {e}")
 
     def add_new_game(self, game_id, name):
-        self.active_games_id.append(game_id)
-        game = StrangeGame(game_id, game_complexity=50)
-        self.games_details.append({''})
+        self.active_games.append(game_id)
+        game = StrangeGame(game_number=self.active_games, game_id=game_id, game_complexity=50)
         self.games_details.append({
             'game_id': game_id, 
             'details': game.configure_game(),
@@ -128,15 +127,15 @@ class StrangeGameServer:
                 self.active_players -=2
                 self.players.remove(name)
                 # The game_id is removed from the active games on the server
-                self.active_games_id.remove(game_id)
+                self.active_games.remove(game_id)
                 self.remove_game_details(game_id)
                 log(type="INFO", msg=f"Player [{name}] has left - Game {game_id} | Closed")
-                log(type="INFO", msg=f"Active Players: {self.active_players}, Connected Players: {len(self.players)}, Active Games: {len(self.active_games_id)}")
+                log(type="INFO", msg=f"Active Players: {self.active_players}, Connected Players: {len(self.players)}, Active Games: {len(self.active_games)}")
             except Exception as e:
                 log(type="ERROR", msg=f" Can't close game {game_id}, {e}")
 
     def initialize_game(self, game_id, name):
-        log(type="INFO", msg=f"Active Games: {self.active_games_id}")
+        log(type="INFO", msg=f"Active Games: {self.active_games}")
         details = None
         while details is None:
             try: 
