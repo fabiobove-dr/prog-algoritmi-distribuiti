@@ -30,23 +30,48 @@ class StrangeGameServer:
         return True
 
     def game_is_active(self, game_id: str) -> bool:
+        """
+        game_is_active method, returns if a game is active
+
+        param: game_id: the string that identifies a game
+        return: True or False depending on the fact that the game is active or not
+        """
         log(type="INFO", msg=f"Check the status of game {game_id}")
-        print(f"p{game_id}")
-        print(f"provaaaa {self.active_games}")
         return True if game_id in self.active_games else False
 
     def player_exists(self, name: str) -> bool:
+        """
+        player_exists method, return if a player is active thus is ready for a match
+
+        param: name: A string which is unique and identifies a player
+        return: True or False depending on the fact that the player is active
+        """
         return True if name in self.players else False
 
-    def add_player(self, name: str):
+    def add_player(self, name: str) -> None: 
+        """
+        add_player method, adds a new player to the players list asserts that a given can't be in the list already
+        once the new player is added the number of active players is incremented by one unit.
+        remember that the players list length is different from the number of active players.
+
+        param: name: A string which is unique and identifies a player
+        returns: nothing
+        """
         try:
             self.players.append(name)
-            self.active_players += 1
+            self.active_players += 1 # Important to note that players list length is different from the number of active players
             log(type="INFO", msg=f"Player [{name}] added to server")
         except Exception as e:
             log(type="ERROR", msg=f"Can't add player [{name}], {e}")
     
-    def activate_player(self, name):
+    def activate_player(self, name: str) -> None:
+        """
+        activate_player method, reactivate a player which may was deactivated because its opponent left or he won the game
+        simply increments the number of active players
+
+        param: name:  A string which is unique and identifies a player, used only for logging purpose
+        returns: nothing
+        """
         self.active_players += 1
         log(type="INFO", msg=f"Player [{name}] re-activated")
 
@@ -205,20 +230,20 @@ class StrangeGameServer:
 
         return answer_is_valid, answer_time
         
-    def find_winner(self, game_id):
-        # Gets the players name
+    def find_winner(self, game_id: str) -> list() or None:
+        
         winner = None
-        player_1, player_2 = self.get_players_of_game(game_id)
-        # If both players have given an answer
-        if self.both_player_answered(game_id):
+        player_1, player_2 = self.get_players_of_game(game_id) # Get players names for logging purpose
+        if self.both_player_answered(game_id): # If both players gave an answer
             # Check if their answer are valid
             player_1_answer_is_valid, player_1_time = self.validate_answer(game_id, player_1, data=None)
             player_2_answer_is_valid, player_2_time = self.validate_answer(game_id, player_2, data=None)
+            # If only one of the answer is valid than is obivious which player has won
             if not player_1_answer_is_valid and not player_2_answer_is_valid:
                 return winner
-            if player_1_time == player_2_time:
-                winner = []
-            else:
+            if player_1_time == player_2_time: # if its a tie then no one won, the winner list is empty
+                winner = [] # Can't be None, also a list makes it easier to understant the code
+            else: # Otherwhise we check for the fastes
                 winner = [player_1] if player_1_time < player_2_time else [player_2]
                 log(type="INFO", msg=f"Times [{player_1_time} vs {player_2_time}]")
         return winner
