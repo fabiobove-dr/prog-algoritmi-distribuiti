@@ -134,19 +134,14 @@ class StrangeGameServer:
             self.remove_player(name)
         else:
             try:
-                # Get the opponents names from the game_id
-                player_1, player_2 = self.get_players_of_game(game_id)
-                # Remove both players from the active players count
+                # Remove the player who left list of players, and both players from the active players count
                 self.active_players -=2
-                self.players_names.remove(player_1)
-                self.players_names.remove(player_2)
-                # The player which is still connected gets reinserted in the palyers on the server
-                self.players_names.append(player_1) if player_1 != name else self.players_names.append(player_2) 
+                self.players.remove(name)
                 # The game_id is removed from the active games on the server
                 self.active_games_id.remove(game_id)
                 self.remove_game_details(game_id)
-                log(type="INFO", msg=f"Player [{name}] has left - Game {game_id} | [{player_1}] vs [{player_2}] Closed")
-                log(type="INFO", msg=f"Active Players: {self.active_players}, Connected Players: {len(self.players_names)}, Active Games: {len(self.active_games_id)}")
+                log(type="INFO", msg=f"Player [{name}] has left - Game {game_id} | Closed")
+                log(type="INFO", msg=f"Active Players: {self.active_players}, Connected Players: {len(self.players)}, Active Games: {len(self.active_games_id)}")
             except Exception as e:
                 log(type="ERROR", msg=f" Can't close game {game_id}, {e}")
 
