@@ -1,5 +1,5 @@
 # Strange Multiplayer Game
-Algoritmi Distribuiti - Multiplayer game with Pyro
+Algoritmi Distribuiti - Multiplayer game with Pyro <br>
 Fabio Bove | fabio.bove.dr@gmail.com | 216219@studenti.unimore.it
 
 A Simple, but strange, multiplayer game.
