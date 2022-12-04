@@ -7,12 +7,18 @@ class StrangeGame:
         def __init__(self, game_number, game_id, game_complexity):
                 self.word_seed = random.seed(game_number + time.time())
                 self.game_complexity = game_complexity
+                self.game_id = game_id   
                 self.long_strange_word = None
                 self.character_to_find = None
                 self.occurrence = None
-                self.game_id = game_id        
+                     
+        def generate_word(self) -> None:
+                """
+                generate_word method, creates a random word of <game_complexity> char
 
-        def generate_word(self):
+                param: None
+                return: Nothing
+                """
                 try:
                         base_word = list(''.join(random.choices(string.ascii_uppercase + string.digits, k=self.game_complexity)))
                         log(type="INFO", msg=f"Base word generated with game_complexity: {self.game_complexity}")
@@ -26,26 +32,34 @@ class StrangeGame:
                 except Exception as e:
                         log(type="ERROR", msg=f"Can't generate the Long Strange Word, {e}")
 
-                return self.long_strange_word
-
-        def choose_character(self):
+        def choose_character(self) -> None:
+                """
+                choose_character method, select a random character of the long_strange_word and counts its occurence
+                
+                param: None
+                return: Nothing
+                """
                 try:
                         self.character_to_find = random.choice(self.long_strange_word)
                         self.occurrence = self.long_strange_word.count(self.character_to_find)
-                        log(type="INFO", msg=f"Choose the character to find and calculated its occurrence.")
+                        log(type="INFO", msg=f"Choosen the character to find and calculated its occurrence.")
                 except Exception as e:
                         log(type="ERROR", msg=f"Can't choose caractert to find, {e}")
         
-                return self.character_to_find, self.occurrence
+        def configure_game(self) -> dict:
+                """
+                configure_game method, returns a dict with the details for a new game.
 
-        def configure_game(self):
+                param: None
+                return: game_details: Is a dict that containes the parameter for the game between two players
+                """
                 log(type="INFO", msg=f"Started a new game configuration")
-                self.generate_word()
-                self.choose_character()
+                self.generate_word() # Generate a new word based on the parameter given when a new Game object is created
+                self.choose_character() # Choose a random char in the string
                 game_details = {
                         'game_complexity': self.game_complexity,
                         'long_strange_word': self.long_strange_word,
                         'character_to_find': self.character_to_find,
-                        'occurrence': self.occurrence,       
+                        'occurrence': self.occurrence, # Occurrence of character_to_find in the string
                 }
                 return game_details
