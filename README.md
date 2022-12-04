@@ -1,6 +1,6 @@
 # Strange Multiplayer Game
 Algoritmi Distribuiti - Multiplayer game with Pyro
-Fabio Bove | fabio.bove.dr@gmail.com 216219@studenti.unimore.it
+Fabio Bove | fabio.bove.dr@gmail.com | 216219@studenti.unimore.it
 
 A Simple, but strange, multiplayer game.
 In this game two players can challenge each other trying to find the number of occurrence of a given character in a word.
