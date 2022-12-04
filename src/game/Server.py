@@ -3,7 +3,6 @@ Fabio Bove | 216219@studenti.unimore.it | fabio.bove.dr@gmail.com
 This Class implements a StrangeServer and its functionalities for the "Strange Multiplayer Game".
 """
 
-
 from utils.logger import log
 from game.Game import StrangeGame
 import Pyro4
@@ -70,36 +69,62 @@ class StrangeGameServer:
         simply increments the number of active players
 
         param: name:  A string which is unique and identifies a player, used only for logging purpose
-        returns: nothing
+        returns: Nothing
         """
         self.active_players += 1
         log(type="INFO", msg=f"Player [{name}] re-activated")
 
     def remove_player(self, name: str):
+        """
+        remove_player method, remove a player from the server
+
+        param: name: A string which is unique and identifies the player that needs to be removed
+        return: Nothing
+        """
         try:
-            self.players.remove(name)
-            self.active_players -= 1
+            self.players.remove(name) # Remove the player name
+            self.active_players -= 1 # Decrease the number of active players
             log(type="INFO", msg=f"Player [{name}] removed from server")
         except Exception as e:
            log(type="ERROR", msg=f"Can't remove player [{name}], {e}")
     
-    def get_players_of_game(self, game_id):
+    def get_players_of_game(self, game_id: str) -> list() or None:
+        """
+        get_players_of_game method, returns the list of players names (max length 2) that joined the game with given game_id 
+
+        param: game_id: The identifier of the game
+        return: players: The list of players names of the game
+        """
         try:
             for game in self.games_details:
                 if game['game_id'] == game_id:
-                    #log(type="INFO", msg=f"Player of game {game_id} are: {game['players']}")
+                    # log(type="INFO", msg=f"Player of game {game_id} are: {game['players']}")
                     return game['players']
         except Exception as e:
                 log(type="ERROR", msg=f" Can't get player of game {game_id}, {e}")
                 return None
 
-    def search_for_game(self):
+    def search_for_game(self) -> str or None:
+        """
+        search_for_game method, search for games with players waiting for an opponent if found
+        returns the game_id of the first game found, if none of the game has one available slot returns None
+
+        param: None
+        return: game_id: The identifier of the game with only one connected player
+        """
         for game in self.games_details:
                 if len(game['players']) == 1:
                     return game['game_id']
         return None
 
-    def add_player_to_game(self, game_id, name):
+    def add_player_to_game(self, game_id: str, name: str) -> None:
+        """
+        add_player_to_game method, add a new player to a game
+
+        param: game_id: The identifier of the game
+        param: name: The name of the player we want to add
+        return: Nothing
+        """
         try:
             for game in self.games_details:
                 if game['game_id'] == game_id:
@@ -136,7 +161,6 @@ class StrangeGameServer:
                 self.add_new_game_details(game_id, name)
         return game_id
 
-
     def close_game(self, game_id, name):
         # If a player leaves before the opponent joined than the "game_id" is going to be "None"
         if game_id is None: 
@@ -155,7 +179,17 @@ class StrangeGameServer:
             except Exception as e:
                 log(type="ERROR", msg=f" Can't close game {game_id}, {e}")
 
-    def initialize_game(self, game_id, name):
+    def get_game_details(self, game_id:str):
+        try:
+            for game in self.games_details:
+                if game['game_id'] == game_id:
+                    #log(type="INFO", msg=f"Game details found for game [{game_id}]")
+                    return game       
+        except Exception as e:
+            log(type="INFO", msg=f"Can't get Game details found for game [{game_id}], {e}")
+            return None
+
+    def initialize_game(self, game_id: str, name: str):
         log(type="INFO", msg=f"Active Games: {self.active_games}")
         details = None
         while details is None:
@@ -166,24 +200,14 @@ class StrangeGameServer:
                 pass
         return details
 
-    def both_player_answered(self, game_id):
+    def both_player_answered(self, game_id:str) -> bool:
         player_1, player_2 = self.get_players_of_game(game_id)
         return self.player_answered(player_1, game_id) and self.player_answered(player_2, game_id) 
     
-    def player_answered(self, name, game_id):
+    def player_answered(self, name: str, game_id:str) -> bool:
         return True if name in self.get_game_details(game_id) else False
 
-    def get_game_details(self, game_id):
-        try:
-            for game in self.games_details:
-                if game['game_id'] == game_id:
-                    #log(type="INFO", msg=f"Game details found for game [{game_id}]")
-                    return game       
-        except Exception as e:
-            log(type="INFO", msg=f"Can't get Game details found for game [{game_id}], {e}")
-            return None
-
-    def store_player_answer(self, game_id, name, data):
+    def store_player_answer(self, game_id: str, name: str, data: dict) -> None:
         try:
             for game in self.games_details:
                 if game['game_id'] == game_id:
@@ -193,7 +217,7 @@ class StrangeGameServer:
         except Exception as e:
             log(type="INFO", msg=f"Can't store player [{name}] answer, for game [{game_id}], {e}")
 
-    def remove_game_details(self, game_id):
+    def remove_game_details(self, game_id: str) -> None:
         try:
             for game in self.games_details:
                 if game['game_id'] == game_id:
@@ -203,8 +227,16 @@ class StrangeGameServer:
         except Exception as e:
             log(type="INFO", msg=f"Can't remove Game details for game [{game_id}], {e}")
 
-    def validate_answer(self, game_id, name, data):
-        # Store player answer -> wich is a dict {'answer': answer, 'total_time': total_time}
+    def validate_answer(self, game_id: str, name: str, data: dict) -> list() or None:
+        """
+        validate_answer method, store player answer -> wich is a dict {'answer': answer, 'total_time': total_time}
+
+        param: game_id: The indentifier of the game, wich is a string
+        param: name: The name of the player that gave the answer
+        param: data: A dict That contains the player answer -> {'answer': answer, 'total_time': total_time}
+        return: answer_is_valid: A boolean that clarify if the player answer is valid (True) or not (False)
+        return: answer_time: The time it took to the player to give the answer, set to float('inf') if the answer is not valid
+        """
         if data: 
             try:
                 self.store_player_answer(game_id, name, data)
@@ -221,17 +253,22 @@ class StrangeGameServer:
                 player_answer = int(game_details[name]['answer'])
             except Exception as e:
                 player_answer = None
-            
-            if player_answer == occurrence:
+            if player_answer == occurrence: # If the player gave a correct answer
                 answer_is_valid = True 
                 answer_time = game_details[name]['total_time']
                 log(type="INFO", msg=f"Player [{name}] answer is valid")
             log(type="INFO", msg=f"Player [{name}] answer validity checked -> [{occurrence}, {player_answer}] ")
-
         return answer_is_valid, answer_time
         
     def find_winner(self, game_id: str) -> list() or None:
-        
+        """
+        find_winner method, find the winner of a game.
+        Wait for the answer of both players and than check for the time of the answer.
+        The fastest player who gave the correct solution wins the game. If it's a tie then no one wins
+
+        param: game_id:  A string that identifies the game
+        return: winner: A list that contains the name of the winner or that is empty if no one won. Returns None if a player answer is missing
+        """
         winner = None
         player_1, player_2 = self.get_players_of_game(game_id) # Get players names for logging purpose
         if self.both_player_answered(game_id): # If both players gave an answer

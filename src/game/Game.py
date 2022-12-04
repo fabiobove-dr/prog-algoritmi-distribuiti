@@ -1,13 +1,18 @@
+"""
+Fabio Bove | 216219@studenti.unimore.it | fabio.bove.dr@gmail.com
+This Class implements the StrangeGame which is the core for a match between two players of the "Strange Multiplayer Game".
+"""
+
 import random
 import string
 import time
 from utils.logger import log
 
 class StrangeGame:
-        def __init__(self, game_number, game_id, game_complexity):
-                self.word_seed = random.seed(game_number + time.time())
-                self.game_complexity = game_complexity
-                self.game_id = game_id   
+        def __init__(self, game_number: int, game_id: str, game_complexity: int):
+                self.word_seed = random.seed(game_number + time.time()) # Seed generated based on current time and game number
+                self.game_complexity = game_complexity # Complexity of the game -> How long the word will be
+                self.game_id = game_id # Identifier of the game
                 self.long_strange_word = None
                 self.character_to_find = None
                 self.occurrence = None

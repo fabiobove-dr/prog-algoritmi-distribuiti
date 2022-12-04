@@ -46,7 +46,13 @@ class StrangeClient:
                 """
                 return self.connected
 
-        def leave_game(self):
+        def leave_game(self) -> None:
+                """
+                leave_game method, makes a player disconnect to the server and leave the game
+                
+                param: None
+                return: Nothing
+                """
                 self.connected = False
                 self.server.close_game(self.game_id, self.name)
                 log(type="GAME_MSG", msg=f"Bye [{self.name}], game left!")
@@ -60,7 +66,7 @@ class StrangeClient:
                         self.connected = True
                 return self.name
         
-        def load_game(self):
+        def load_game(self) -> None:
                 old_message = None
                 while self.game_id == None:
                         self.game_id = self.server.start_game(self.name)
@@ -74,7 +80,7 @@ class StrangeClient:
                                 log(type="GAME_MSG", msg=message)
                         old_message = message
 
-        def play(self):
+        def play(self) -> None:
                 while self.server.game_is_active(self.game_id):
                         log(type="GAME_MSG", msg="Playing :)")
                         

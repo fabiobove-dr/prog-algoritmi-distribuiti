@@ -1,3 +1,8 @@
+"""
+Fabio Bove | 216219@studenti.unimore.it | fabio.bove.dr@gmail.com
+This module is a simple logger for the "Strange Multiplayer Game".
+"""
+
 from datetime import date
 
 DEBUG = True # If set to False only GAME_MSG will be printed
