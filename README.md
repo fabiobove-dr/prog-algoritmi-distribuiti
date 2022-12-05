@@ -8,6 +8,9 @@ Seems easy, but the word is made from randomly chosen and shuffled characters. T
 
 The fastest player wins and can continue to play - loser is kicked out from the server.<br>
 
+# Enviroment Configuration
+Go to the main directory and activate the /pad-venv, wich is the virtual enviroment of the project.
+
 # How to start the server 
 Go to the /src directory.<br>
 Just open a new terminal and type the following commands:<br>
