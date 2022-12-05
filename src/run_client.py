@@ -7,7 +7,6 @@ To run type the following command on the terminal:
 >> python run_client.py
 """
 
-
 import os
 import win32api # To manage the exit action of the client
 from utils.logger import log # For logging and debug purpose
