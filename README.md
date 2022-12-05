@@ -14,7 +14,7 @@ The fastest player wins and can continue to play - loser is kicked out from the 
 
 Go to the main directory and create/activate the virtual enviroment of the project.<br>
 To create one:
->> virtualenv pad-venv
+>> virtualenv pad-venv<br>
 >> pad-venv\Scripts\activate
 
 Then import the needed packages from the "requirements.txt" file:
