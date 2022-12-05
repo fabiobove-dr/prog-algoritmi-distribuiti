@@ -8,8 +8,11 @@ Seems easy, but the word is made from randomly chosen and shuffled characters. T
 
 The fastest player wins and can continue to play - loser is kicked out from the server.<br>
 
-# Configuration
-Go to the main directory and create/activate the virtual enviroment of the project.
+# Configuration & Requirements
+- Windows Operating System with Python and pip<br>
+- Recomanded versions: Python 3.10.4 and pip 22.3.1<br>
+
+Go to the main directory and create/activate the virtual enviroment of the project.<br>
 To create one:
 >> virtualenv pad-venv
 >> pad-venv\Scripts\activate
