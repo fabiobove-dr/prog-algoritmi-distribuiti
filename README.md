@@ -10,7 +10,7 @@ The fastest player wins and can continue to play - loser is kicked out from the 
 
 # Configuration & Requirements
 - Windows Operating System with Python and pip<br>
-- Recomanded versions: Python 3.10.4 and pip 22.3.1<br>
+- Recommended versions: Python 3.10.4 and pip 22.3.1<br>
 
 Go to the main directory and create/activate the virtual enviroment of the project.<br>
 To create one:
