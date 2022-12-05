@@ -19,4 +19,8 @@ Go to the /src directory.<br>
 To run type the following command on the terminal:<br>
 >> python run_client.py<br>
 
-# Have fun ;)
+# Project Requests 
+All'esame deve essere mostrata l'applicazione in esecuzione e deve essere presentata una relazione che descrive il progetto realizzato e deve comprendere: <br>
+- Descrizione dei requisiti, ed in particolare delle funzionalità messe a disposizione (ad es. tramite SRS);
+- Descrizione dell'architettura (ad es. tramite diagramma a blocchi o UML);
+- Descrizione dei protocolli usati (client-server o peer-to-peer, ad es. tramite diagrammi UML).
