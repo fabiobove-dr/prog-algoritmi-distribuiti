@@ -58,6 +58,12 @@ class StrangeClient:
                 log(type="GAME_MSG", msg=f"Bye [{self.name}], game left!")
 
         def welcome(self) -> list([str, int]):
+                """
+                welcome method, allow a new player to register to the server chosing a name that needs to be unique.
+
+                param: Nothing
+                return: name: The name chosen by the player
+                """
                 if not self.connected:
                         self.name = input("What is your name?").strip()
                         while self.server.player_exists(self.name):
@@ -67,14 +73,20 @@ class StrangeClient:
                 return self.name
         
         def load_game(self) -> None:
+                """
+                load_game method, allow a player to search for games to join and wait for opponenents
+
+                param: None
+                return: Nothing
+                """
                 old_message = None
-                while self.game_id == None:
-                        self.game_id = self.server.start_game(self.name)
-                        players = self.server.get_players_of_game(self.game_id)
-                        if players:
+                while self.game_id == None: # Until a game is found or created
+                        self.game_id = self.server.start_game(self.name) # Try to create a new game or join an existing one
+                        players = self.server.get_players_of_game(self.game_id) # Get also the opponent name for logging purpose
+                        if players: # If a game exists and thus we have the opponent name
                                 self.opponent = players.remove(self.name)
                                 message = f"Hey [{self.name}], your opponent is [{self.opponent}] - Game: [{self.game_id}]" 
-                        else:
+                        else: # Otherwhise we just wait for an opponent
                                 message = f"Hey [{self.name}], wait for your opponent."      
                         if message != old_message:
                                 log(type="GAME_MSG", msg=message)
