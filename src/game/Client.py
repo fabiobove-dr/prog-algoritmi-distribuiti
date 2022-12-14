@@ -107,7 +107,7 @@ class StrangeClient:
                                 if answer_is_valid is None: # If The player has't given an answer yet
                                         answer_is_valid = self.send_answer()
                                 
-                                if self.server.both_player_answered(self.game_id): # If both player have answered we can check if ther is a winner
+                                if self.server.both_player_answered(self.game_id): # If both player have answered we can check if theris a winner
                                         winner = self.server.find_winner(self.game_id) # Finds the winner or check for tie
                                         if winner is not None:
                                                 if self.name in winner: # If the player is the winner of the game
