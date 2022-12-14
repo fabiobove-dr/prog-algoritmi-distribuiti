@@ -101,7 +101,7 @@ class StrangeClient:
                         
                         game = self.server.initialize_game(self.game_id, self.name)  
                         self.game_details = game['details']
-                        log(type="GAME_MSG", msg=f"Long Strange Word: {self.game_details['long_strange_word']}")
+                        
                         
                         # Finds the winner of the game 
                         winner, answer_is_valid = None, None
@@ -125,6 +125,7 @@ class StrangeClient:
 
         def send_answer(self) -> bool:
                 os.system('cls') # Clean the screen from previous messages
+                log(type="GAME_MSG", msg=f"Long Strange Word: {self.game_details['long_strange_word']}")
                 log(type="GAME_MSG", msg=f"Type the number of occurrence for character: '{self.game_details['character_to_find']}'")
                 
                 time_start = time.time() # Timer is started for performance evaluation and see which player is the fastest
