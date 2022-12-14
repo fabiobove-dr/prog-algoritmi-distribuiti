@@ -93,6 +93,9 @@ class StrangeClient:
                         old_message = message
 
         def play(self) -> None:
+                """
+                                
+                """
                 while self.server.game_is_active(self.game_id):
                         log(type="GAME_MSG", msg="Playing :)")
                         

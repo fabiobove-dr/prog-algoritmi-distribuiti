@@ -246,8 +246,12 @@ class StrangeGameServer:
         # Validate player answer
         answer_is_valid = False
         answer_time = float('inf')
+
+        # Get Game details 
         game_details = self.get_game_details(game_id)
+
         if game_details:
+            # Get the correct answer
             occurrence =  int(game_details['details']['occurrence'])
             try:
                 player_answer = int(game_details[name]['answer'])
