@@ -16,7 +16,9 @@ class StrangeGame:
                 self.long_strange_word = None
                 self.character_to_find = None
                 self.occurrence = None
-                     
+                self.players = []
+                self.player_asnwer = {}
+
         def generate_word(self) -> None:
                 """
                 generate_word method, creates a random word of <game_complexity> char

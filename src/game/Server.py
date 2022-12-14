@@ -16,7 +16,8 @@ class StrangeGameServer:
         self.games_details = [] # List of games details, one dict for each game
         self.active_players = 0 # Number of active player on the server (Note active player != connected player)
         self.players = [] # List of players connected to the server
-
+        self.games = []
+        
     def check_status(self) -> bool:
         """
         check_status, simple method to check if the server is reachable 
