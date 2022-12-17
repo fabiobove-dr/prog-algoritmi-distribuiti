@@ -26,6 +26,9 @@ Just open a new terminal and type the following commands:<br>
 >> python -m Pyro4.naming<br>
 >> python run_server.py<br>
 
+# Protocol Note
+By default Pyro uses the PYRO protocol, that relies on Python's built-in pickle facility to create these messages. The transport over the network is done using TCP/IP. 
+
 # How to start the client
 Go to the /src directory.<br>
 To run type the following command on the terminal:<br>
